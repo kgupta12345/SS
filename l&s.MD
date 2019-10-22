@@ -1,3 +1,5 @@
+
+###### DEPLOYMENT:
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -21,7 +23,7 @@ spec:
         ports:
         - containerPort: 8080
 ```
-
+###### SERVICE:
 ```
 apiVersion: v1
 kind: Service
@@ -42,6 +44,8 @@ spec:
     app: e
 
 ```
+
+###### OBSERVATIONS:
 
 - kubectl get deployment -> a
 - kubectl get pods -> a-5cbdc789c7-sjwx4
