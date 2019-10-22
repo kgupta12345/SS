@@ -43,8 +43,8 @@ spec:
 
 ```
 
-kubectl get deployment -> a
-kubectl get pods -> a-5cbdc789c7-sjwx4
-kubectl get rs -> a-5cbdc789c7
-kubectl get services ->  g
+###### kubectl get deployment -> a
+###### kubectl get pods -> a-5cbdc789c7-sjwx4
+###### kubectl get rs -> a-5cbdc789c7
+###### kubectl get services ->  g
 
