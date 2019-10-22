@@ -41,7 +41,7 @@ spec:
     name: http
     targetPort: 8080
   selector:
-    app: e
+    app: d
 
 ```
 
