@@ -19,3 +19,9 @@ You can change your password after the first login.
 ![image](https://user-images.githubusercontent.com/45539698/67255058-c691d680-f49d-11e9-9a65-c21f8dbdfbe2.png)
 ![image](https://user-images.githubusercontent.com/45539698/67255072-d5788900-f49d-11e9-8c9c-1ba650b71e60.png)
 ![image](https://user-images.githubusercontent.com/45539698/67255096-05279100-f49e-11e9-921d-e30cf0725319.png)
+
+
+
+
+
+ docker login rahulvaishserver-rahulvaishdocker.jfrog.io
