@@ -38,9 +38,13 @@ PASSWORD: Id9Qn6Cg3Bj7Jq
 docker tag rahulvaish/springbootdocker rahulvaishserver-rahulvaishdockerremote.jfrog.io/springbootdocker
 docker push rahulvaishserver-rahulvaishdockerremote.jfrog.io/springbootdocker
 ```
+
+
 ```
 curl -uadmin:Id9Qn6Cg3Bj7Jq -T /Users/rvaish/KUBEExperiments/rc.yml "https://rahulvaishserver.jfrog.io/rahulvaishserver/rahulvaishdockerlocal/targetfolder"
 ```
+![image](https://user-images.githubusercontent.com/45539698/67260681-36ae5580-f4ba-11e9-86cb-2a5b01203eef.png)
+
 
 ##### STEP#5: Pull Docker Image from Artifactory:
 
