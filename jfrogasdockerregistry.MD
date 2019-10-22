@@ -31,14 +31,21 @@ You can change your password after the first login.
 ##### STEP#3: Check Artifactory Home:
 ![image](https://user-images.githubusercontent.com/45539698/67259990-81c66980-f4b6-11e9-985e-cd64a90f43f4.png)
 ##### STEP#4: Push Docker Image on Artifactory:
-
-
+```
+docker login rahulvaishserver-rahulvaishdockerremote.jfrog.io
+USERNAME: admin
+PASSWORD: Id9Qn6Cg3Bj7Jq
+docker tag rahulvaish/springbootdocker rahulvaishserver-rahulvaishdockerremote.jfrog.io/springbootdocker
+docker push rahulvaishserver-rahulvaishdockerremote.jfrog.io/springbootdocker
+```
+```
+curl -uadmin:Id9Qn6Cg3Bj7Jq -T /Users/rvaish/KUBEExperiments/rc.yml "https://rahulvaishserver.jfrog.io/rahulvaishserver/rahulvaishdockerlocal/targetfolder"
+```
 
 ##### STEP#5: Pull Docker Image from Artifactory:
 
 
 
  docker login rahulvaishserver-rahulvaishdocker.jfrog.io
-curl -uadmin:Id9Qn6Cg3Bj7Jq -T /ReleaseNotes.html "https://rahulvaishserver.jfrog.io/rahulvaishserver/example-repo-lo
-cal/TARGET_FILE_PATH"
+
 https://www.jfrog.com/confluence/display/RTF/Getting+Started+with+Artifactory+as+a+Docker+Registry
