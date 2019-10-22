@@ -27,3 +27,4 @@ You can change your password after the first login.
  docker login rahulvaishserver-rahulvaishdocker.jfrog.io
 curl -uadmin:Id9Qn6Cg3Bj7Jq -T /ReleaseNotes.html "https://rahulvaishserver.jfrog.io/rahulvaishserver/example-repo-lo
 cal/TARGET_FILE_PATH"
+https://www.jfrog.com/confluence/display/RTF/Getting+Started+with+Artifactory+as+a+Docker+Registry
