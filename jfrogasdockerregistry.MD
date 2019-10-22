@@ -26,7 +26,18 @@ You can change your password after the first login.
 ###### Choose Remote :
 ![image](https://user-images.githubusercontent.com/45539698/67259780-48d9c500-f4b5-11e9-9e41-e307060f3243.png)
 ![image](https://user-images.githubusercontent.com/45539698/67255096-05279100-f49e-11e9-921d-e30cf0725319.png)
-###### Click New - Choose Docker:
+###### Click New | Choose Docker | Assign Repository Name:
+![image](https://user-images.githubusercontent.com/45539698/67259871-d9b0a080-f4b5-11e9-8e21-ed4c9ee8862c.png)
+##### STEP#3: Check Artifactory Home:
+
+
+
+
+##### STEP#4: Push Docker Image on Artifactory:
+
+
+
+##### STEP#5: Pull Docker Image from Artifactory:
 
 
 
