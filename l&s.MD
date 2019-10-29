@@ -115,7 +115,6 @@ spec:
  ```
  
  
- 
  apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -217,4 +216,107 @@ If   you would have used environment: production then there would be no matching
 
 
 
+++++++++++WITHOUT MATCHEXPRESSIONS+++++++++++++
 
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: a
+  labels:
+    app: b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: d
+      environment: dev
+      tier: backend
+  template:
+    metadata:
+      labels:
+        tier: backend
+        environment: dev
+        app: d
+    spec:
+      containers:
+      - name: e
+        image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080
+
+kubectl get pods -l 'environment in (dev)' -> POD Lists
+kubectl get pods -l 'environment =dev' -> POD Lists
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+ML—ME ——> WITH RS & RC
+
+
+RS with ML-ME WORKS FINE
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: appdeploymentfromyml
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: appdeploymentfromyml
+      environment: dev
+      tier: backend
+    matchExpressions:
+      - {key: tier, operator: NotIn, values: [cache]}
+      - {key: tier, operator: NotIn, values: [frontend]}
+      - {key: tier, operator: In, values: [backend]} 
+      - {key: environment, operator: In, values: [dev]}
+  template:
+    metadata:
+      name: appdeploymentfromyml
+      labels:
+        app: appdeploymentfromyml
+        environment: dev
+        tier: backend
+    spec:
+      containers:
+      - name: appdeploymentfromyml
+        image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080
+
+
+RS without ML-ME PAIR WORKS FINE
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: appdeploymentfromyml
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: appdeploymentfromyml
+      environment: dev
+      tier: backend
+  template:
+    metadata:
+      name: appdeploymentfromyml
+      labels:
+        app: appdeploymentfromyml
+        environment: dev
+        tier: backend
+    spec:
+      containers:
+      - name: appdeploymentfromyml
+        image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080 
+
+
+
+RC does not have ML definition so if you put ML | ML-ME . The YML DOES NOT COMPILES 
