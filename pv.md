@@ -214,7 +214,7 @@ GCK (on Thinkpad)
 =================================================================
 
 PV PVC
-(ABOVE EXAMPLE WAS ON DYAMIC PROVISIONING)
+(>|*|*|*|*|*|*|*|*|*|<ABOVE EXAMPLE WAS ON DYAMIC PROVISIONING>|*|*|*|*|*|*|*|*|*|<)
 (PV gets created at the same time of PVC is Dynamic Provisioning)
 (Below example tells about Static Provisioning where PV is created before PVC)
 
@@ -296,7 +296,7 @@ Kubectl apply -f pvdep.yml
 
 
 
-<OPEN QUESTION - WHERE DOES THE PV GETS CREATED>
+<OPEN QUESTION - WHERE DOES THE PV ("/pvhp/data”) GETS CREATED>
 
 Go inside pod 
 You will find /mnt-pvdep/
@@ -305,6 +305,8 @@ Delete the dployment
 Re-instantiate the deployment
 Go inside the pod
 You will find the  folder
+=================================================================
+
 
 
 
