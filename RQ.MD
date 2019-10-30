@@ -14,36 +14,36 @@ vi compresourcequota.yml
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: computeresourcequota
+  name: compresourcequota
   namespace: rahulvaishnamespace
 spec:
   hard:
+    memory: "500Mi"
     limits.memory: "500Mi"
-    requests.memory: "200Mi"
+    requests.memory: "500Mi"
+    cpu: "5"
     limits.cpu: "5"
-    requests.cpu: "2"
-
+    requests.cpu: "5"
 
 
 kubectl apply -f compresourcequota.yml
 
-
-kubectl -n rahulvaishnamespace describe quota computeresourcequota
-
-
-
 ```
 ```
-bash-3.2$ kubectl -n rahulvaishnamespace describe quota computeresourcequota
-Name:            computeresourcequota
+bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
+Name:            compresourcequota
 Namespace:       rahulvaishnamespace
 Resource         Used  Hard
 --------         ----  ----
+cpu              0     5
 limits.cpu       0     5
 limits.memory    0     500Mi
-requests.cpu     0     2
-requests.memory  0     200Mi
-bash-3.2$ 
+memory           0     500Mi
+requests.cpu     0     5
+requests.memory  0     500Mi
 ```
+
+
+
 
 
