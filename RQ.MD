@@ -116,7 +116,7 @@ spec:
 ```
 ###### Checking: Replicas=3 | RQ caps on 2.  
 ```
-________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________________________________________________________
 bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
 Name:       podsresourcequota
 Namespace:  rahulvaishnamespace
@@ -149,11 +149,11 @@ Pod Template:
   Containers:
    e:
     Image:        rahulvaish/springbootdocker
-________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________________________________________________________
 ```
 ###### Checking: What happend to the 3rd pod ?
 ```
-________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________________________________________________________
 bash-3.2$ kubectl get rs
 NAME           DESIRED   CURRENT   READY   AGE
 a-5cbdc789c7   3         2         2       32m
@@ -189,7 +189,7 @@ Events:
   ----     ------            ----               ----                   -------
   Warning  FailedCreate      38m                replicaset-controller  Error creating: pods "a-5cbdc789c7-2zc59" is forbidden: exceeded quota: podsresourcequota, requested: pods=1, used: pods=2, limited: pods=2
   Warning  FailedCreate      38m                replicaset-controller  Error creating: pods "a-5cbdc789c7-dtl72" is forbidden: exceeded quota: podsresou:
-________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________________________________________________________
 ```
 *WHATIF: Create a Deployment (Replicas=3) before setting the Resource Quota (Pod=2):*
 ```
