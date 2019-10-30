@@ -1,13 +1,18 @@
 ##### Resource Quota is a practice to draw boundaries in a cluster. It is applied on a Namespaces. To understand, let's see an example:
 
 ##### STEP#1: Create a Namespace:
-
+```
+vi rahulvaishnamespace.yml
+```
 ```
 apiVersion: v1
 kind: Namespace
 metadata:
   name: rahulvaishnamespace
   
+```
+```
+kubectl apply -f rahulvaishnamespace.yml
 ```
 ##### STEP#2: Switch on the newly created Namespace:
 ```
@@ -16,11 +21,9 @@ kubectl config set-context $(kubectl config current-context) --namespace=rahulva
 
 ##### STEP#3: Create a Compute Quota:
 ```
-
-
 vi compresourcequota.yml
-
-
+```
+```
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -34,11 +37,12 @@ spec:
     cpu: "5"
     limits.cpu: "5"
     requests.cpu: "5"
-
-
-kubectl apply -f compresourcequota.yml
-
 ```
+```
+kubectl apply -f compresourcequota.yml
+```
+###### Checking:
+
 ```
 bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
 Name:            compresourcequota
@@ -53,10 +57,11 @@ requests.cpu     0     5
 requests.memory  0     500Mi
 ```
 
-## EXAMPLE#2
+##### STEP#4: Create a Pod Quota:
 ```
 vi podsresourcequota.yml
-
+```
+```
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -65,10 +70,11 @@ metadata:
 spec:
   hard:
     pods: "2"
-
-kubectl apply -f podsresourcequota.yml
-
 ```
+```
+kubectl apply -f podsresourcequota.yml
+```
+###### Checking:
 ```
 bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
 Name:       podsresourcequota
@@ -79,7 +85,7 @@ pods        0     2
 bash-3.2$ 
 
 ```
-
+##### STEP#5: Create a Deployment
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
