@@ -44,17 +44,17 @@ kubectl apply -f compresourcequota.yml
 ###### Checking:
 
 ```
-bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
-Name:            compresourcequota
-Namespace:       rahulvaishnamespace
-Resource         Used  Hard
---------         ----  ----
-cpu              0     5
-limits.cpu       0     5
-limits.memory    0     500Mi
-memory           0     500Mi
-requests.cpu     0     5
-requests.memory  0     500Mi
+                    bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
+                    Name:            compresourcequota
+                    Namespace:       rahulvaishnamespace
+                    Resource         Used  Hard
+                    --------         ----  ----
+                    cpu              0     5
+                    limits.cpu       0     5
+                    limits.memory    0     500Mi
+                    memory           0     500Mi
+                    requests.cpu     0     5
+                    requests.memory  0     500Mi
 ```
 
 ##### STEP#4: Create a Pod Quota:
