@@ -5,9 +5,13 @@ metadata:
   name: rahulvaishnamespace
   
 ```
+kubectl get namespaces
+kubectl config set-context $(kubectl config current-context) --namespace=rahulvaishnamespace
+
+
 ## EXAMPLE#1
 ```
-kubectl get namespaces
+
 
 vi compresourcequota.yml
 
@@ -71,4 +75,30 @@ bash-3.2$
 
 ```
 
-
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: a
+  namespace: rahulvaishnamespace
+  labels:
+    app: b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: d
+  template:
+    metadata:
+      labels:
+        app: d
+    spec:
+      containers:
+      - name: e
+        image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080
+ ```
+ 
+ 
+ 
