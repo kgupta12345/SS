@@ -1,6 +1,6 @@
 ##### Resource Quota is a practice to draw boundaries in a cluster. It is applied on a Namespaces. To understand, let's see an example:
 
-#### STEP#1: Create a Namespace:
+##### STEP#1: Create a Namespace:
 ```
 vi rahulvaishnamespace.yml
 ```
@@ -14,7 +14,7 @@ metadata:
 ```
 kubectl apply -f rahulvaishnamespace.yml
 ```
-#### STEP#2: Switch on the newly created Namespace:
+##### STEP#2: Switch on the newly created Namespace:
 ```
 kubectl config set-context $(kubectl config current-context) --namespace=rahulvaishnamespace
 ```
@@ -76,13 +76,13 @@ kubectl apply -f podsresourcequota.yml
 ```
 ###### Checking:
 ```
-bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
-Name:       podsresourcequota
-Namespace:  rahulvaishnamespace
-Resource    Used  Hard
---------    ----  ----
-pods        0     2
-bash-3.2$ 
+                    bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
+                    Name:       podsresourcequota
+                    Namespace:  rahulvaishnamespace
+                    Resource    Used  Hard
+                    --------    ----  ----
+                    pods        0     2
+                    bash-3.2$ 
 
 ```
 ##### STEP#5: Create a Deployment
@@ -95,7 +95,7 @@ metadata:
   labels:
     app: b
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: d
@@ -109,7 +109,22 @@ spec:
         image: rahulvaish/springbootdocker
         ports:
         - containerPort: 8080
- ```
- 
+```
+```
+                    bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
+                    Name:       podsresourcequota
+                    Namespace:  rahulvaishnamespace
+                    Resource    Used  Hard
+                    --------    ----  ----
+                    pods        0     2
+                    bash-3.2$ kubectl apply -f d.yml
+                    deployment.extensions/a created
+                    bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
+                    Name:       podsresourcequota
+                    Namespace:  rahulvaishnamespace
+                    Resource    Used  Hard
+                    --------    ----  ----
+                    pods        2     2
+```
  
  
