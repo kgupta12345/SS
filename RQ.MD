@@ -1,3 +1,7 @@
+##### Resource Quota is a practice to draw boundaries in a cluster. It is applied on a Namespaces. To understand, let's see an example:
+
+##### STEP#1: Create a Namespace:
+
 ```
 apiVersion: v1
 kind: Namespace
@@ -5,11 +9,12 @@ metadata:
   name: rahulvaishnamespace
   
 ```
-kubectl get namespaces
+##### STEP#2: Switch on the newly created Namespace:
+```
 kubectl config set-context $(kubectl config current-context) --namespace=rahulvaishnamespace
+```
 
-
-## EXAMPLE#1
+##### STEP#3: Create a Compute Quota:
 ```
 
 
