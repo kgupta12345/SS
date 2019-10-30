@@ -19,48 +19,7 @@ kubectl apply -f rahulvaishnamespace.yml
 kubectl config set-context $(kubectl config current-context) --namespace=rahulvaishnamespace
 ```
 
-##### STEP#3: Create a Compute Quota:
-```
-vi compresourcequota.yml
-```
-```
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: compresourcequota
-  namespace: rahulvaishnamespace
-spec:
-  hard:
-    memory: "500Mi"
-    limits.memory: "500Mi"
-    requests.memory: "500Mi"
-    cpu: "5"
-    limits.cpu: "5"
-    requests.cpu: "5"
-```
-```
-kubectl apply -f compresourcequota.yml
-```
-###### Checking:
-
-```
-____________________________________________________________________________________________________
-
-bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
-Name:            compresourcequota
-Namespace:       rahulvaishnamespace
-Resource         Used  Hard
---------         ----  ----
-cpu              0     5
-limits.cpu       0     5
-limits.memory    0     500Mi
-memory           0     500Mi
-requests.cpu     0     5
-requests.memory  0     500Mi
-____________________________________________________________________________________________________
-```
-
-##### STEP#4: Create a Pod Quota:
+##### STEP#3: Create a Pod Quota:
 ```
 vi podsresourcequota.yml
 ```
@@ -89,7 +48,7 @@ pods        0     2
 bash-3.2$ 
 ____________________________________________________________________________________________________
 ```
-##### STEP#5: Create a Deployment
+##### STEP#4: Create a Deployment
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -206,6 +165,45 @@ pods        3     2
 ____________________________________________________________________________________________________
 ```
 
+##### STEP#5: Create a Compute Quota:
+```
+vi compresourcequota.yml
+```
+```
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compresourcequota
+  namespace: rahulvaishnamespace
+spec:
+  hard:
+    memory: "500Mi"
+    limits.memory: "500Mi"
+    requests.memory: "500Mi"
+    cpu: "5"
+    limits.cpu: "5"
+    requests.cpu: "5"
+```
+```
+kubectl apply -f compresourcequota.yml
+```
+###### Checking:
 
+```
+____________________________________________________________________________________________________
+
+bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
+Name:            compresourcequota
+Namespace:       rahulvaishnamespace
+Resource         Used  Hard
+--------         ----  ----
+cpu              0     5
+limits.cpu       0     5
+limits.memory    0     500Mi
+memory           0     500Mi
+requests.cpu     0     5
+requests.memory  0     500Mi
+____________________________________________________________________________________________________
+```
  
  
