@@ -59,6 +59,15 @@ spec:
 kubectl apply -f podsresourcequota.yml
 
 ```
+```
+bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
+Name:       podsresourcequota
+Namespace:  rahulvaishnamespace
+Resource    Used  Hard
+--------    ----  ----
+pods        0     2
+bash-3.2$ 
 
+```
 
 
