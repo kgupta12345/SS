@@ -1,4 +1,4 @@
-##### Resource Quota is a practice to draw boundaries in a cluster. It is applied on a Namespaces. To understand, let's see an example:
+##### ResourceQuota is a practice to draw boundaries in a cluster. It is applied on a Namespaces. To understand, let's see an example:
 
 ##### STEP#1: Create a Namespace:
 ```
@@ -232,7 +232,7 @@ spec:
         - containerPort: 8080
 
 ```
-###### Checking:
+###### Checking: Because the computation resource is so less, that is why, not more than 1 pod could get created. 
 ```
 __________________________________________________________________________________________________________________________________________________________________________________________________________________
 bash-3.2$ kubectl get deployments
@@ -278,3 +278,5 @@ Events:
 
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________
 ```
+###### If we deleted the ResourceQuota compresourcequota, and then delete the existing deployment, and re-instantiate fresh deployment, then all 3 pods will spin off! I noticed that, just deleting the RQ anf not the deployment does not spins off the pods. 
+
