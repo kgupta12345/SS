@@ -205,5 +205,76 @@ requests.cpu     0     5
 requests.memory  0     500Mi
 ____________________________________________________________________________________________________
 ```
- 
- 
+
+##### STEP#6: Make a Deployment:
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: a
+  namespace: rahulvaishnamespace
+  labels:
+    app: b
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: d
+  template:
+    metadata:
+      labels:
+        app: d
+    spec:
+      containers:
+      - name: e
+        image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080
+
+```
+###### Checking:
+```
+____________________________________________________________________________________________________
+bash-3.2$ kubectl get deployments
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+a      1/3     1            1           66m
+bash-3.2$ kubectl get rs
+NAME           DESIRED   CURRENT   READY   AGE
+a-5cbdc789c7   3         1         1       73m
+bash-3.2$ kubectl describe rs a-5cbdc789c7
+Name:           a-5cbdc789c7
+Namespace:      rahulvaishnamespace
+Selector:       app=d,pod-template-hash=5cbdc789c7
+Labels:         app=d
+                pod-template-hash=5cbdc789c7
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 1
+Controlled By:  Deployment/a
+Replicas:       1 current / 3 desired
+Pods Status:    1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=d
+           pod-template-hash=5cbdc789c7
+  Containers:
+   e:
+    Image:        rahulvaish/springbootdocker
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type             Status  Reason
+  ----             ------  ------
+  ReplicaFailure   True    FailedCreate
+Events:
+  Type     Reason            Age                  From                   Message
+  ----     ------            ----                 ----                   -------
+  Warning  FailedCreate      56m                  replicaset-controller  Error creating: pods "a-5cbdc789c7-nnfsv" is forbidden: exceeded quota: podsresourcequota, requested: pods=1, used: pods=2, limited: pods=2
+  Warning  FailedCreate      39m                  replicaset-controller  Error creating: pods "a-5cbdc789c7-z9lxd" is forbidden: exceeded quota: podsresourcequota, requested: pods=1, used: pods=2, limited: pods=2
+  Warning  FailedCreate      22m                  replicaset-controller  Error creating: pods "a-5cbdc789c7-8z8w6" is forbidden: exceeded quota: podsresourcequota, requested: pods=1, used: pods=2, limited: pods=2
+
+
+____________________________________________________________________________________________________
+```
