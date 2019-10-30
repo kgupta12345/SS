@@ -77,7 +77,8 @@ spec:
 kubectl apply -f podsresourcequota.yml
 ```
 ###### Checking:
-```________________________________________________________________________________________________________________
+```
+________________________________________________________________________________________________________________
 bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
 Name:       podsresourcequota
 Namespace:  rahulvaishnamespace
@@ -112,6 +113,7 @@ spec:
         ports:
         - containerPort: 8080
 ```
+###### Checking: Replicas=3 | RQ caps on 2.  
 ```
 ________________________________________________________________________________________________________________
 bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
@@ -128,7 +130,68 @@ Namespace:  rahulvaishnamespace
 Resource    Used  Hard
 --------    ----  ----
 pods        2     2
+bash-3.2$ kubectl -n rahulvaishnamespace describe deployment a
+Name:                   a
+Namespace:              rahulvaishnamespace
+CreationTimestamp:      Wed, 30 Oct 2019 16:54:24 +0530
+Labels:                 app=b
+Annotations:            deployment.kubernetes.io/revision: 1
+                        kubectl.kubernetes.io/last-applied-configuration:
+                          {"apiVersion":"extensions/v1beta1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"b"},"name":"a","namespace":"rahulvais...
+Selector:               app=d
+Replicas:               3 desired | 2 updated | 2 total | 2 available | 1 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=d
+  Containers:
+   e:
+    Image:        rahulvaish/springbootdocker
 ________________________________________________________________________________________________________________
 ```
+###### Checking: What happend to the 3rd pod ?
+```
+________________________________________________________________________________________________________________
+bash-3.2$ kubectl get rs
+NAME           DESIRED   CURRENT   READY   AGE
+a-5cbdc789c7   3         2         2       32m
+bash-3.2$ kubectl -n rahulvaishnamespace describe rs a-5cbdc789c7 | less
+Name:           a-5cbdc789c7
+Namespace:      rahulvaishnamespace
+Selector:       app=d,pod-template-hash=5cbdc789c7
+Labels:         app=d
+                pod-template-hash=5cbdc789c7
+Annotations:    deployment.kubernetes.io/desired-replicas: 3
+                deployment.kubernetes.io/max-replicas: 4
+                deployment.kubernetes.io/revision: 1
+Controlled By:  Deployment/a
+Replicas:       2 current / 3 desired
+Pods Status:    2 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=d
+           pod-template-hash=5cbdc789c7
+  Containers:
+   e:
+    Image:        rahulvaish/springbootdocker
+    Port:         8080/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type             Status  Reason
+  ----             ------  ------
+  ReplicaFailure   True    FailedCreate
+Events:
+  Type     Reason            Age                From                   Message
+  ----     ------            ----               ----                   -------
+  Warning  FailedCreate      38m                replicaset-controller  Error creating: pods "a-5cbdc789c7-2zc59" is forbidden: exceeded quota: podsresourcequota, requested: pods=1, used: pods=2, limited: pods=2
+  Warning  FailedCreate      38m                replicaset-controller  Error creating: pods "a-5cbdc789c7-dtl72" is forbidden: exceeded quota: podsresou:
+________________________________________________________________________________________________________________
+```
+
+
+
  
  
