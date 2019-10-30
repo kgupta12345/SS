@@ -77,8 +77,7 @@ spec:
 kubectl apply -f podsresourcequota.yml
 ```
 ###### Checking:
-```
-________________________________________________________________________________________________________________
+```________________________________________________________________________________________________________________
 bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
 Name:       podsresourcequota
 Namespace:  rahulvaishnamespace
