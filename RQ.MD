@@ -1,6 +1,6 @@
 ##### Resource Quota is a practice to draw boundaries in a cluster. It is applied on a Namespaces. To understand, let's see an example:
 
-##### STEP#1: Create a Namespace:
+#### STEP#1: Create a Namespace:
 ```
 vi rahulvaishnamespace.yml
 ```
@@ -14,7 +14,7 @@ metadata:
 ```
 kubectl apply -f rahulvaishnamespace.yml
 ```
-##### STEP#2: Switch on the newly created Namespace:
+#### STEP#2: Switch on the newly created Namespace:
 ```
 kubectl config set-context $(kubectl config current-context) --namespace=rahulvaishnamespace
 ```
