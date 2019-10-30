@@ -278,5 +278,5 @@ Events:
 
 ___________________________________________________________________________________________________________________________________________________________________________________________________________________
 ```
-###### If we deleted the ResourceQuota compresourcequota, and then delete the existing deployment, and re-instantiate fresh deployment, then all 3 pods will spin off! I noticed that, just deleting the RQ anf not the deployment does not spins off the pods. 
+###### If we deleted the ResourceQuota compresourcequota, and then delete the existing deployment, and re-instantiate a fresh deployment, then all 3 pods will spin off! I noticed that, just deleting the RQ and not the deployment does not spins off the pods. 
 
