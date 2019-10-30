@@ -190,7 +190,20 @@ Events:
   Warning  FailedCreate      38m                replicaset-controller  Error creating: pods "a-5cbdc789c7-dtl72" is forbidden: exceeded quota: podsresou:
 ________________________________________________________________________________________________________________
 ```
-
+*WHATIF: Create a Deployment (Replicas=3) before setting the Resource Quota (Pod=2):*
+```
+________________________________________________________________________________________________________________
+bash-3.2$ kubectl get deployments
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+a      3/3     3            3           3m57s
+bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
+Name:       podsresourcequota
+Namespace:  rahulvaishnamespace
+Resource    Used  Hard
+--------    ----  ----
+pods        3     2
+________________________________________________________________________________________________________________
+```
 
 
  
