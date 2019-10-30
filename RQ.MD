@@ -4,7 +4,8 @@ kind: Namespace
 metadata:
   name: rahulvaishnamespace
   
- ```
+```
+## EXAMPLE#1
 ```
 kubectl get namespaces
 
