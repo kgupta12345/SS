@@ -43,7 +43,22 @@ requests.cpu     0     5
 requests.memory  0     500Mi
 ```
 
+## EXAMPLE#2
+```
+vi podsresourcequota.yml
 
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: podsresourcequota
+  namespace: rahulvaishnamespace
+spec:
+  hard:
+    pods: "2"
+
+kubectl apply -f podsresourcequota.yml
+
+```
 
 
 
