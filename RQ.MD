@@ -44,7 +44,7 @@ kubectl apply -f compresourcequota.yml
 ###### Checking:
 
 ```
-_________________________________________________________________________
+________________________________________________________________________________________________________________
 bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
 Name:            compresourcequota
 Namespace:       rahulvaishnamespace
@@ -56,7 +56,7 @@ limits.memory    0     500Mi
 memory           0     500Mi
 requests.cpu     0     5
 requests.memory  0     500Mi
-_________________________________________________________________________
+________________________________________________________________________________________________________________
 ```
 
 ##### STEP#4: Create a Pod Quota:
@@ -78,7 +78,7 @@ kubectl apply -f podsresourcequota.yml
 ```
 ###### Checking:
 ```
-_________________________________________________________________________
+________________________________________________________________________________________________________________
 bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
 Name:       podsresourcequota
 Namespace:  rahulvaishnamespace
@@ -86,7 +86,7 @@ Resource    Used  Hard
 --------    ----  ----
 pods        0     2
 bash-3.2$ 
-_________________________________________________________________________
+________________________________________________________________________________________________________________
 ```
 ##### STEP#5: Create a Deployment
 ```
@@ -114,7 +114,7 @@ spec:
         - containerPort: 8080
 ```
 ```
-_________________________________________________________________________
+________________________________________________________________________________________________________________
 bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
 Name:       podsresourcequota
 Namespace:  rahulvaishnamespace
@@ -129,7 +129,7 @@ Namespace:  rahulvaishnamespace
 Resource    Used  Hard
 --------    ----  ----
 pods        2     2
-_________________________________________________________________________
+________________________________________________________________________________________________________________
 ```
  
  
