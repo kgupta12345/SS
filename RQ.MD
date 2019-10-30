@@ -44,17 +44,19 @@ kubectl apply -f compresourcequota.yml
 ###### Checking:
 
 ```
-                    bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
-                    Name:            compresourcequota
-                    Namespace:       rahulvaishnamespace
-                    Resource         Used  Hard
-                    --------         ----  ----
-                    cpu              0     5
-                    limits.cpu       0     5
-                    limits.memory    0     500Mi
-                    memory           0     500Mi
-                    requests.cpu     0     5
-                    requests.memory  0     500Mi
+_________________________________________________________________________
+bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
+Name:            compresourcequota
+Namespace:       rahulvaishnamespace
+Resource         Used  Hard
+--------         ----  ----
+cpu              0     5
+limits.cpu       0     5
+limits.memory    0     500Mi
+memory           0     500Mi
+requests.cpu     0     5
+requests.memory  0     500Mi
+_________________________________________________________________________
 ```
 
 ##### STEP#4: Create a Pod Quota:
@@ -76,14 +78,15 @@ kubectl apply -f podsresourcequota.yml
 ```
 ###### Checking:
 ```
-                    bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
-                    Name:       podsresourcequota
-                    Namespace:  rahulvaishnamespace
-                    Resource    Used  Hard
-                    --------    ----  ----
-                    pods        0     2
-                    bash-3.2$ 
-
+_________________________________________________________________________
+bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
+Name:       podsresourcequota
+Namespace:  rahulvaishnamespace
+Resource    Used  Hard
+--------    ----  ----
+pods        0     2
+bash-3.2$ 
+_________________________________________________________________________
 ```
 ##### STEP#5: Create a Deployment
 ```
@@ -111,20 +114,22 @@ spec:
         - containerPort: 8080
 ```
 ```
-                    bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
-                    Name:       podsresourcequota
-                    Namespace:  rahulvaishnamespace
-                    Resource    Used  Hard
-                    --------    ----  ----
-                    pods        0     2
-                    bash-3.2$ kubectl apply -f d.yml
-                    deployment.extensions/a created
-                    bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
-                    Name:       podsresourcequota
-                    Namespace:  rahulvaishnamespace
-                    Resource    Used  Hard
-                    --------    ----  ----
-                    pods        2     2
+_________________________________________________________________________
+bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
+Name:       podsresourcequota
+Namespace:  rahulvaishnamespace
+Resource    Used  Hard
+--------    ----  ----
+pods        0     2
+bash-3.2$ kubectl apply -f d.yml
+deployment.extensions/a created
+bash-3.2$ kubectl -n rahulvaishnamespace describe quota podsresourcequota
+Name:       podsresourcequota
+Namespace:  rahulvaishnamespace
+Resource    Used  Hard
+--------    ----  ----
+pods        2     2
+_________________________________________________________________________
 ```
  
  
