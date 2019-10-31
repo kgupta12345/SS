@@ -254,7 +254,22 @@ ________________________________________________________________________________
 
 ```
 ____________________________________________________________________________________________________
-
-
+[root@master K8Experiments]# kubectl get deployment
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+a      2/5     2            2           26s
+[root@master K8Experiments]# kubectl get pods
+NAME               READY   STATUS    RESTARTS   AGE
+a-6595bb47-42s2m   1/1     Running   0          35s
+a-6595bb47-w4sfj   1/1     Running   0          35s
+[root@master K8Experiments]# kubectl -n rahulvaishnamespace describe quota compresourcequota
+Name:            compresourcequota
+Namespace:       rahulvaishnamespace
+Resource         Used    Hard
+--------         ----    ----
+limits.cpu       2       2
+limits.memory    2Gi     2Gi
+requests.cpu     1       1
+requests.memory  1000Mi  1Gi
+[root@master K8Experiments]# 
 ____________________________________________________________________________________________________
 ```
