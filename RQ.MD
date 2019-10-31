@@ -177,123 +177,21 @@ metadata:
   namespace: rahulvaishnamespace
 spec:
   hard:
-    memory: "500Mi"
-    limits.memory: "500Mi"
-    requests.memory: "500Mi"
-    cpu: "5"
-    limits.cpu: "5"
-    requests.cpu: "5"
+    limits.memory: "2Gi"
+    limits.cpu: "2"
+    requests.cpu: "1"
+    requests.memory: "1Gi"
+
 ```
 ```
 kubectl apply -f compresourcequota.yml
 ```
-###### Checking:
-
-```
-____________________________________________________________________________________________________
-
-bash-3.2$ kubectl -n rahulvaishnamespace describe quota compresourcequota
-Name:            compresourcequota
-Namespace:       rahulvaishnamespace
-Resource         Used  Hard
---------         ----  ----
-cpu              0     5
-limits.cpu       0     5
-limits.memory    0     500Mi
-memory           0     500Mi
-requests.cpu     0     5
-requests.memory  0     500Mi
-____________________________________________________________________________________________________
-```
 
 ##### STEP#6: Make a Deployment:
 ```
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: a
-  namespace: rahulvaishnamespace
-  labels:
-    app: b
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: d
-  template:
-    metadata:
-      labels:
-        app: d
-    spec:
-      containers:
-      - name: e
-        image: rahulvaish/springbootdocker
-        ports:
-        - containerPort: 8080
-
+vi deployment.yml
 ```
-###### Checking: Because the computation resource is so less, that is why, not more than 1 pod could get created. 
 ```
-__________________________________________________________________________________________________________________________________________________________________________________________________________________
-bash-3.2$ kubectl get deployments
-NAME   READY   UP-TO-DATE   AVAILABLE   AGE
-a      1/3     1            1           66m
-bash-3.2$ kubectl get rs
-NAME           DESIRED   CURRENT   READY   AGE
-a-5cbdc789c7   3         1         1       73m
-bash-3.2$ kubectl describe rs a-5cbdc789c7
-Name:           a-5cbdc789c7
-Namespace:      rahulvaishnamespace
-Selector:       app=d,pod-template-hash=5cbdc789c7
-Labels:         app=d
-                pod-template-hash=5cbdc789c7
-Annotations:    deployment.kubernetes.io/desired-replicas: 3
-                deployment.kubernetes.io/max-replicas: 4
-                deployment.kubernetes.io/revision: 1
-Controlled By:  Deployment/a
-Replicas:       1 current / 3 desired
-Pods Status:    1 Running / 0 Waiting / 0 Succeeded / 0 Failed
-Pod Template:
-  Labels:  app=d
-           pod-template-hash=5cbdc789c7
-  Containers:
-   e:
-    Image:        rahulvaish/springbootdocker
-    Port:         8080/TCP
-    Host Port:    0/TCP
-    Environment:  <none>
-    Mounts:       <none>
-  Volumes:        <none>
-Conditions:
-  Type             Status  Reason
-  ----             ------  ------
-  ReplicaFailure   True    FailedCreate
-Events:
-  Type     Reason            Age                  From                   Message
-  ----     ------            ----                 ----                   -------
-  Warning  FailedCreate      56m                  replicaset-controller  Error creating: pods "a-5cbdc789c7-nnfsv" is forbidden: exceeded quota: podsresourcequota, requested: pods=1, used: pods=2, limited: pods=2
-  Warning  FailedCreate      39m                  replicaset-controller  Error creating: pods "a-5cbdc789c7-z9lxd" is forbidden: exceeded quota: podsresourcequota, requested: pods=1, used: pods=2, limited: pods=2
-  Warning  FailedCreate      22m                  replicaset-controller  Error creating: pods "a-5cbdc789c7-8z8w6" is forbidden: exceeded quota: podsresourcequota, requested: pods=1, used: pods=2, limited: pods=2
-
-
-___________________________________________________________________________________________________________________________________________________________________________________________________________________
-```
-###### If we deleted the ResourceQuota compresourcequota, and then delete the existing deployment, and re-instantiate a fresh deployment, then all 3 pods will spin off! I noticed that, just deleting the RQ and not the deployment does not spins off the pods. 
-
-```
-bash-3.2$ cat compresourcequota.yml 
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: compresourcequota
-  namespace: rahulvaishnamespace
-spec:
-  hard:
-    limits.memory: "10Gi"
-    limits.cpu: "5"
-    requests.cpu: "2"
-    requests.memory: "2Gi"
-bash-3.2$ cat d.yml 
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -318,10 +216,15 @@ spec:
         - containerPort: 8080
         resources:
           requests:
-            memory: "2Gi"
-            cpu: "1"
+            memory: "500Mi"
+            cpu: "500m"
           limits:
-            memory: "4Gi"
+            memory: "1Gi"
             cpu: "1"
-            
-            ```
+
+
+```
+```
+kubectl apply -f deployment.yml
+```
+
