@@ -227,6 +227,7 @@ spec:
 ```
 kubectl apply -f deployment.yml
 ```
+###### Checking:
 ```
 ____________________________________________________________________________________________________
 [root@master K8Experiments]# kubectl -n rahulvaishnamespace describe quota compresourcequota
@@ -238,6 +239,22 @@ limits.cpu       2       2
 limits.memory    2Gi     2Gi
 requests.cpu     1       1
 requests.memory  1000Mi  1Gi
+[root@master K8Experiments]# kubectl get deployment
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+a      2/2     2            2           28s
+[root@master K8Experiments]# kubectl get pods
+NAME               READY   STATUS    RESTARTS   AGE
+a-6595bb47-bhz9g   1/1     Running   0          38s
+a-6595bb47-q76w5   1/1     Running   0          38s
 [root@master K8Experiments]# 
+
+____________________________________________________________________________________________________
+```
+###### On increasing replicas=5:
+
+```
+____________________________________________________________________________________________________
+
+
 ____________________________________________________________________________________________________
 ```
