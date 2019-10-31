@@ -227,4 +227,17 @@ spec:
 ```
 kubectl apply -f deployment.yml
 ```
-
+```
+____________________________________________________________________________________________________
+[root@master K8Experiments]# kubectl -n rahulvaishnamespace describe quota compresourcequota
+Name:            compresourcequota
+Namespace:       rahulvaishnamespace
+Resource         Used    Hard
+--------         ----    ----
+limits.cpu       2       2
+limits.memory    2Gi     2Gi
+requests.cpu     1       1
+requests.memory  1000Mi  1Gi
+[root@master K8Experiments]# 
+____________________________________________________________________________________________________
+```
