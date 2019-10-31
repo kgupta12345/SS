@@ -280,3 +280,48 @@ ________________________________________________________________________________
 ```
 ###### If we deleted the ResourceQuota compresourcequota, and then delete the existing deployment, and re-instantiate a fresh deployment, then all 3 pods will spin off! I noticed that, just deleting the RQ and not the deployment does not spins off the pods. 
 
+```
+bash-3.2$ cat compresourcequota.yml 
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compresourcequota
+  namespace: rahulvaishnamespace
+spec:
+  hard:
+    limits.memory: "10Gi"
+    limits.cpu: "5"
+    requests.cpu: "2"
+    requests.memory: "2Gi"
+bash-3.2$ cat d.yml 
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: a
+  namespace: rahulvaishnamespace
+  labels:
+    app: b
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: d
+  template:
+    metadata:
+      labels:
+        app: d
+    spec:
+      containers:
+      - name: e
+        image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1"
+          limits:
+            memory: "4Gi"
+            cpu: "1"
+            
+            ```
