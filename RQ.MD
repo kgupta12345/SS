@@ -251,8 +251,11 @@ requests.memory  1000Mi  1Gi
 [root@master K8Experiments]# 
 ____________________________________________________________________________________________________
 
+========================
+O B S E R V A T I O N S:
+========================
 
-OBSERVATION: 
+
 2 Replicas means 2 Pods.
 POD1's MAX CPU =400m
 POD2's MAX CPU =400m 
@@ -304,6 +307,63 @@ requests.memory  1000Mi (1Gi)  1Gi
 ```
 ____________________________________________________________________________________________________
 
+[root@master K8Experiments]# kubectl get deployments
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+a      2/5     2            2           34s
+
+
+[root@master K8Experiments]# kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+a-55d4bbb78d-fr7kp   1/1     Running   0          36s
+a-55d4bbb78d-j8tns   1/1     Running   0          36s
+
+
+[root@master K8Experiments]# kubectl get rs
+NAME           DESIRED   CURRENT   READY   AGE
+a-55d4bbb78d   5         2         2       42s
+
+
+[root@master K8Experiments]# kubectl describe rs a-55d4bbb78d
+Name:           a-55d4bbb78d
+Namespace:      rahulvaishnamespace
+Selector:       app=d,pod-template-hash=55d4bbb78d
+Labels:         app=d
+                pod-template-hash=55d4bbb78d
+Annotations:    deployment.kubernetes.io/desired-replicas: 5
+                deployment.kubernetes.io/max-replicas: 7
+                deployment.kubernetes.io/revision: 1
+Controlled By:  Deployment/a
+Replicas:       2 current / 5 desired
+Pods Status:    2 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=d
+           pod-template-hash=55d4bbb78d
+  Containers:
+   e:
+    Image:      rahulvaish/springbootdocker
+    Port:       8080/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     400m
+      memory:  1Gi
+    Requests:
+      cpu:        200m
+      memory:     500Mi
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type             Status  Reason
+  ----             ------  ------
+  ReplicaFailure   True    FailedCreate
+Events:
+  Type     Reason            Age                From                   Message
+  ----     ------            ----               ----                   -------
+  Normal   SuccessfulCreate  61s                replicaset-controller  Created pod: a-55d4bbb78d-fr7kp
+  Warning  FailedCreate      61s                replicaset-controller  Error creating: pods "a-55d4bbb78d-mj6xm" is forbidden: exceeded quota: compresourcequota, requested: limits.memory=1Gi,requests.memory=500Mi, used: limits.memory=2Gi,requests.memory=1000Mi, limited: limits.memory=2Gi,requests.memory=1Gi
+  Normal   SuccessfulCreate  61s                replicaset-controller  Created pod: a-55d4bbb78d-j8tns
+  Warning  FailedCreate      61s                replicaset-controller  Error creating: pods "a-55d4bbb78d-8rx8r" is forbidden: exceeded quota: compresourcequota, requested: limits.memory=1Gi,requests.memory=500Mi, used: limits.memory=2Gi,requests.memory=1000Mi, limited: limits.memory=2Gi,requests.memory=1Gi
+  Warning  FailedCreate      61s                replicaset-controller  Error creating: pods "a-55d4bbb78d-r24wv" is forbidden: exceeded quota: compresourcequota, requested: limits.memory=1Gi,requests.memory=500Mi, used: limits.memory=2Gi,requests.memory=1000Mi, limited: limits.memory=2Gi,requests.memory=1Gi
 
 ____________________________________________________________________________________________________
 ```
