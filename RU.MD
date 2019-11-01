@@ -5,6 +5,8 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
+  annotations:
+    kubernetes.io/change-cause: "ImageName: SpringBootDocker"
   name: appdeploymentfromyml
   labels:
     app: appdeploymentfromyml
@@ -65,9 +67,11 @@ strategy.type: RollingUpdate - 0 Downtime. Example: Let say we have 100 Machines
 
 During the update process - When the existing pods are getting terminated and new ones are getting created, the state of application remains as the previous one. Once all existing pods are terminated and new once are born , the stae of the application is updated (to new one).
 
-We can check the rollout activity by:
+We can check the rollout activity 'LIVE' by:
 ```
 kubectl rollout status deployment appdeploymentfromyml
+OR
+kubectl get pods -o wide
 ```
 
 Each time we do rollout activity, a new replicaSet is created. Below are the commands, which states the changes in the Rollout activity:
