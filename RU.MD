@@ -39,6 +39,21 @@ spec:
 
 strategy.type: RollingUpdate - There is another strategy- Recreate which will come with the cost of downtime. It will shoutdown all replicas and then updated and recreate.
 
+strategy.type: RollingUpdate - 0 Downtime. Example: Let say we have 100 Machines. RU will update first 10%, then another 10%.......
+
+ "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxUnavailable": "25%",
+        "maxSurge": "25%"
+      }
+    },
+    "revisionHistoryLimit": 10,
+    "progressDeadlineSeconds": 600
+    
+    
+    
+
 strategy.rollingUpdate.maxSurge: 0
 strategy.rollingUpdate:maxUnavailable: 1
 minReadySeconds: 5
