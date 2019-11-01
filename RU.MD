@@ -1,4 +1,4 @@
-
+default is RU strategy not recreate. RC means all pods will be down (terminated) then they will get created.
 ```
 
 
@@ -81,4 +81,10 @@ kubectl rollout history deployment appdeploymentfromyml
 kubectl rollout history deployment appdeploymentfromyml --revision 2
 ```
 kubectl rollout undo deployment appdeploymentfromyml --to-revision=3
+
+kubectl rollout pause deployment appdeploymentfromyml
+Now on browser what will come ?
+
+
+kubectl rollout resume deployment appdeploymentfromyml
 
