@@ -74,7 +74,10 @@ strategy.type: RollingUpdate - 0 Downtime. Example: Let say we have 100 Machines
     
     
 
-strategy.rollingUpdate.maxSurge: 0
-strategy.rollingUpdate:maxUnavailable: 1
-minReadySeconds: 5
-revisionHistoryLimit: 10 
+During the update process - When pods are getting terminated and new once are taking birth, the state of application is the previous one. Once all pods are terminated and new once are born , the stae of the application is changed (to new one).
+
+
+
+kubectl get rs
+kubectl rollout history deployment appdeploymentfromyml
+kubectl rollout history deployment appdeploymentfromyml --revision 2
