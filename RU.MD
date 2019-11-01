@@ -61,23 +61,19 @@ strategy.type: RollingUpdate - There is another strategy- Recreate which will co
 
 strategy.type: RollingUpdate - 0 Downtime. Example: Let say we have 100 Machines. RU will update first 10%, then another 10%.......
 
- "strategy": {
-      "type": "RollingUpdate",
-      "rollingUpdate": {
-        "maxUnavailable": "25%",
-        "maxSurge": "25%"
-      }
-    },
-    "revisionHistoryLimit": 10,
-    "progressDeadlineSeconds": 600
-    
-    
     
 
-During the update process - When pods are getting terminated and new once are taking birth, the state of application is the previous one. Once all pods are terminated and new once are born , the stae of the application is changed (to new one).
+During the update process - When the existing pods are getting terminated and new ones are getting created, the state of application remains as the previous one. Once all existing pods are terminated and new once are born , the stae of the application is updated (to new one).
 
+We can check the rollout activity by:
+```
+kubectl rollout status deployment appdeploymentfromyml
+```
 
-
+Each time we do rollout activity, a new replicaSet is created. Below are the commands, which states the changes in the Rollout activity:
+```
 kubectl get rs
 kubectl rollout history deployment appdeploymentfromyml
 kubectl rollout history deployment appdeploymentfromyml --revision 2
+```
+
