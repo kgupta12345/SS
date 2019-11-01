@@ -80,4 +80,5 @@ kubectl get rs
 kubectl rollout history deployment appdeploymentfromyml
 kubectl rollout history deployment appdeploymentfromyml --revision 2
 ```
+kubectl rollout undo deployment appdeploymentfromyml --to-revision=3
 
