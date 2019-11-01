@@ -35,7 +35,27 @@ spec:
         - containerPort: 8080
 
 ```
+```
 
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: appservicefromyml
+  name: appservicefromyml
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+  - nodePort: 31746
+    port: 8080
+    protocol: TCP
+    name: http
+    targetPort: 8080
+  selector:
+    app: appdeploymentfromyml
+
+```
 
 strategy.type: RollingUpdate - There is another strategy- Recreate which will come with the cost of downtime. It will shoutdown all replicas and then updated and recreate.
 
