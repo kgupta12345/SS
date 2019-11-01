@@ -165,7 +165,8 @@ pods        3     2
 ____________________________________________________________________________________________________
 ```
 
-##### STEP#5: Create a Compute Quota:
+##### STEP#5: Create a Compute Quota: 
+##### [THE BELOW EXPERIENT HAS BEEN CARRIED ON MY UBUNTU MACHINE]
 ```
 vi compresourcequota.yml
 ```
@@ -178,10 +179,9 @@ metadata:
 spec:
   hard:
     limits.memory: "2Gi"
-    limits.cpu: "2"
-    requests.cpu: "1"
+    limits.cpu: "2000m"
+    requests.cpu: "1000m"
     requests.memory: "1Gi"
-
 ```
 ```
 kubectl apply -f compresourcequota.yml
@@ -217,12 +217,10 @@ spec:
         resources:
           requests:
             memory: "500Mi"
-            cpu: "500m"
+            cpu: "200m"
           limits:
             memory: "1Gi"
-            cpu: "1"
-
-
+            cpu: "400m"
 ```
 ```
 kubectl apply -f deployment.yml
@@ -230,24 +228,27 @@ kubectl apply -f deployment.yml
 ###### Checking:
 ```
 ____________________________________________________________________________________________________
+[root@master K8Experiments]# kubectl get deployments
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+a      2/2     2            2           17s
+
+
+[root@master K8Experiments]# kubectl get pods
+NAME                 READY   STATUS    RESTARTS   AGE
+a-55d4bbb78d-gxk6d   1/1     Running   0          66s
+a-55d4bbb78d-nqb4f   1/1     Running   0          66s
+
+
 [root@master K8Experiments]# kubectl -n rahulvaishnamespace describe quota compresourcequota
 Name:            compresourcequota
 Namespace:       rahulvaishnamespace
 Resource         Used    Hard
 --------         ----    ----
-limits.cpu       2       2
+limits.cpu       800m    2
 limits.memory    2Gi     2Gi
-requests.cpu     1       1
+requests.cpu     400m    1
 requests.memory  1000Mi  1Gi
-[root@master K8Experiments]# kubectl get deployment
-NAME   READY   UP-TO-DATE   AVAILABLE   AGE
-a      2/2     2            2           28s
-[root@master K8Experiments]# kubectl get pods
-NAME               READY   STATUS    RESTARTS   AGE
-a-6595bb47-bhz9g   1/1     Running   0          38s
-a-6595bb47-q76w5   1/1     Running   0          38s
 [root@master K8Experiments]# 
-
 ____________________________________________________________________________________________________
 ```
 ###### On increasing replicas=5:
