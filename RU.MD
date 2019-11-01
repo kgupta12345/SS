@@ -15,7 +15,7 @@ spec:
       app: appdeploymentfromyml
   selector:
     matchLabels:
-      app: d
+      app: appdeploymentfromyml
   strategy:
     type: RollingUpdate
     rollingUpdate:
