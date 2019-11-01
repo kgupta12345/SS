@@ -35,3 +35,11 @@ spec:
         - containerPort: 8080
 
 ```
+
+
+strategy.type: RollingUpdate - There is another strategy- Recreate which will come with the cost of downtime. It will shoutdown all replicas and then updated and recreate.
+
+strategy.rollingUpdate.maxSurge: 0
+strategy.rollingUpdate:maxUnavailable: 1
+minReadySeconds: 5
+revisionHistoryLimit: 10 
