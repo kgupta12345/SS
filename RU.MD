@@ -5,12 +5,14 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: a
-  namespace: rahulvaishnamespace
+  name: appdeploymentfromyml
   labels:
-    app: b
+    app: appdeploymentfromyml
 spec:
-  replicas: 3
+  replicas: 4
+  selector:
+    matchLabels:
+      app: appdeploymentfromyml
   selector:
     matchLabels:
       app: d
@@ -24,15 +26,12 @@ spec:
   template:
     metadata:
       labels:
-        app: d
+        app: appdeploymentfromyml
     spec:
       containers:
-      - name: e
+      - name: appdeploymentfromyml
         image: rahulvaish/springbootdocker
         ports:
         - containerPort: 8080
-
-
-
 
 ```
