@@ -1,4 +1,4 @@
-#### ResourceQuota is a practice to draw boundaries on a Namespace (in a cluster). To understand, let's see an example:
+#### ResourceQuota is a practice to draw boundaries on Namespaces (in a cluster). To understand, let's see an example:
 
 ##### STEP#1: Create a Namespace:
 ```
