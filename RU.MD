@@ -71,7 +71,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    kubernetes.io/change-cause: "ImageName: SpringBootDocker"
+    kubernetes.io/change-cause: "ImageName: SpringBootDocker Version2"
   name: appdeploymentfromyml
   labels:
     app: appdeploymentfromyml
@@ -103,10 +103,10 @@ spec:
 
 ```
 ##### To understand the above dynamics pictorically: 
-####### Follow the series of diagrams below. The Pod with Purple Image is the updated application which needs to be deployed. The Pod with Green Images refers to existing application. 
-*STEP1 - STEP2*
+###### Follow the series of diagrams below. The Pod with Purple Image is the updated application which needs to be deployed. The Pod with Green Images refers to existing application. </br>
+*STEP1 - STEP2* </br>
 ![image](https://user-images.githubusercontent.com/45539698/68069239-9858a480-fd83-11e9-891d-b4ed0646a6bd.png)
-*STEP3 - STEP4*
+*STEP3 - STEP4* </br>
 ![image](https://user-images.githubusercontent.com/45539698/68069252-d3f36e80-fd83-11e9-90f6-d51d20f783a7.png)
 
 ##### To check the rollout activity 'LIVE' execute:
@@ -116,7 +116,12 @@ OR
 kubectl get pods -o wide
 ```
 
-Each time we do rollout activity, a new replicaSet is created. Below are the commands, which states the changes in the Rollout activity:
+
+
+
+
+
+##### Each time we do rollout activity, a new replicaSet is created. To list the Rollout states:
 ```
 kubectl get rs
 kubectl rollout history deployment appdeploymentfromyml
