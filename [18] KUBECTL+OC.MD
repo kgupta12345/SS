@@ -11,7 +11,7 @@
  
  ```
 ##### STEP#1: Execute: oc login https://
-![image](https://user-images.githubusercontent.com/45539698/68071009-ab776e80-fd9b-11e9-8a30-a3e90c3135d9.png)
+![image](https://user-images.githubusercontent.com/45539698/68072250-a8837a80-fda9-11e9-9b41-4fb49297aa92.png)
 ##### STEP#1: Execute oc config view
 ![image](https://user-images.githubusercontent.com/45539698/68071016-bcc07b00-fd9b-11e9-8440-b9cc246244b6.png)
 ![image](https://user-images.githubusercontent.com/45539698/68071029-c9dd6a00-fd9b-11e9-83f9-82084757a3d3.png)
