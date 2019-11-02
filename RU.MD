@@ -180,9 +180,21 @@ Pod Template:
 bash-3.2$ 
 ```
 
+##### To revert back on previous version:
+*CURRENT APPLICATION:*
+![image](https://user-images.githubusercontent.com/45539698/68070082-677e6c80-fd8f-11e9-81dc-8ece48955bb5.png)
+```
+bash-3.2$ kubectl rollout history deployment appdeploymentfromyml
+deployment.extensions/appdeploymentfromyml 
+REVISION  CHANGE-CAUSE
+1         ImageName: SpringBootDocker
+2         ImageName: SpringBootDocker Version2
 
+bash-3.2$ kubectl rollout undo deployment appdeploymentfromyml --to-revision=1
+```
+*REVERTED BACK:*
+![image](https://user-images.githubusercontent.com/45539698/68070110-ed9ab300-fd8f-11e9-96ba-a8e8aa52ff14.png)
 
-kubectl rollout undo deployment appdeploymentfromyml --to-revision=3
 
 ##### RollingUpdate is not an uncontrollable chain reaction. We can *pause* and *resume* it anytime:
 ```
