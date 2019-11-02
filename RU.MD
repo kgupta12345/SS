@@ -194,7 +194,7 @@ REVISION  CHANGE-CAUSE
 bash-3.2$ kubectl rollout undo deployment appdeploymentfromyml --to-revision=1
 ```
 *REVERTED BACK:*
-![image](https://user-images.githubusercontent.com/45539698/68070191-27b88480-fd91-11e9-9124-be155944446b.png)
+![image](https://user-images.githubusercontent.com/45539698/68070210-7cf49600-fd91-11e9-97c3-7de5740e3858.png)
 
 ##### RollingUpdate is not an uncontrollable chain reaction. We can *pause* and *resume* it anytime:
 ```
