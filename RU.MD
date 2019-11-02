@@ -3,6 +3,9 @@
 
 ##### STEP#1: Create a Deployment:
 ```
+vi rudep.yml
+```
+```
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -38,9 +41,14 @@ spec:
         - containerPort: 8080
 
 ```
+```
+kubectl apply -f rudep.yml
+```
 ##### STEP#2: Create a Service:
 ```
-
+vi ruser.yml
+```
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -59,6 +67,9 @@ spec:
   selector:
     app: appdeploymentfromyml
 
+```
+```
+kubectl apply -f ruser.yml
 ```
 ###### By default, Kubernetes follows *RollingUpdate* strategy. According to this strategy at a single point of  time a certain number/percentage of pods will be killed and re-created. For example: Let say there are 100 pods and 10% pods are decided for Rolling Update Strategy, then, first 10 pods will be killed and 10 new pods will be re-created....and so on. The process will continue till all the 100 pods are updated. There is another strategy *Recreate* which comes with the cost of downtime. It will shoutdown all replicas and then recreate.
 
