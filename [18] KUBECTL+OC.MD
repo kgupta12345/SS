@@ -6,9 +6,8 @@
  [1] tar -zxvf openshift-origin-server-v3.11.0-0cbc58b-linux-64bit.tar.gz 
  [2] mv openshift-origin-server-v3.11.0-0cbc58b-linux-64bit /usr/local/OSE/
  [3] cd /usr/local/OSE/
- [4] 
+ [4]  
  [5]
- [6]
  
  ```
 ##### STEP#1: Execute: oc login https://
