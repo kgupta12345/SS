@@ -66,7 +66,7 @@ spec:
  
 ##### To understand the concept pictorically: 
 ####### Follow the series of diagrams below. The Pod with Purple Image is the updated application which needs to be deployed. The Pod with Green Images refers to existing application. 
-![image](https://user-images.githubusercontent.com/45539698/68069142-41060480-fd82-11e9-9f74-fb8ccf2ac4ad.png)
+![image](https://user-images.githubusercontent.com/45539698/68069239-9858a480-fd83-11e9-891d-b4ed0646a6bd.png)
 
 ![image](https://user-images.githubusercontent.com/45539698/68069139-30558e80-fd82-11e9-892a-c96c9ce74a9e.png)
 
