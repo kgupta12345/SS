@@ -128,21 +128,64 @@ kubectl get pods -o wide
 ```
 
 
-
-
-
-
-##### Each time we do rollout activity, a new replicaSet is created. To list the Rollout states:
+##### Each time we do rollout activity(by making change in the rudep.yml), a new replicaSet is created. To list the Rollout states:
 ```
-kubectl get rs
-kubectl rollout history deployment appdeploymentfromyml
-kubectl rollout history deployment appdeploymentfromyml --revision 2
+bash-3.2$ kubectl get rs
+NAME                              DESIRED   CURRENT   READY   AGE
+appdeploymentfromyml-59f8f5c46b   0         0         0       10m
+appdeploymentfromyml-5b4f5b9b8f   4         4         4       7m49s
+
+
+
+bash-3.2$ kubectl rollout history deployment appdeploymentfromyml
+deployment.extensions/appdeploymentfromyml 
+REVISION  CHANGE-CAUSE
+1         ImageName: SpringBootDocker
+2         ImageName: SpringBootDocker Version2
+
+
+
+bash-3.2$ kubectl rollout history deployment appdeploymentfromyml --revision 1
+deployment.extensions/appdeploymentfromyml with revision #1
+Pod Template:
+  Labels:	app=appdeploymentfromyml
+	pod-template-hash=59f8f5c46b
+  Annotations:	kubernetes.io/change-cause: ImageName: SpringBootDocker
+  Containers:
+   appdeploymentfromyml:
+    Image:	rahulvaish/springbootdocker
+    Port:	8080/TCP
+    Host Port:	0/TCP
+    Environment:	<none>
+    Mounts:	<none>
+  Volumes:	<none>
+
+
+
+bash-3.2$ kubectl rollout history deployment appdeploymentfromyml --revision 2
+deployment.extensions/appdeploymentfromyml with revision #2
+Pod Template:
+  Labels:	app=appdeploymentfromyml
+	pod-template-hash=5b4f5b9b8f
+  Annotations:	kubernetes.io/change-cause: ImageName: SpringBootDocker Version2
+  Containers:
+   appdeploymentfromyml:
+    Image:	rahulvaish/springbootdocker-v2
+    Port:	8080/TCP
+    Host Port:	0/TCP
+    Environment:	<none>
+    Mounts:	<none>
+  Volumes:	<none>
+
+bash-3.2$ 
 ```
+
+
+
 kubectl rollout undo deployment appdeploymentfromyml --to-revision=3
 
+##### RollingUpdate is not an uncontrollable chain reaction. We can *pause* and *resume* it anytime:
+```
 kubectl rollout pause deployment appdeploymentfromyml
-Now on browser what will come ?
-
-
 kubectl rollout resume deployment appdeploymentfromyml
-
+```
