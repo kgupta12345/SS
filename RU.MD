@@ -182,7 +182,8 @@ bash-3.2$
 
 ##### To revert back on previous version:
 *CURRENT APPLICATION:*
-![image](https://user-images.githubusercontent.com/45539698/68070169-cb556500-fd90-11e9-9b2e-af45f2086b81.png)
+![image](https://user-images.githubusercontent.com/45539698/68070179-f17b0500-fd90-11e9-89cf-e18fc2adc1c5.png)
+
 ```
 bash-3.2$ kubectl rollout history deployment appdeploymentfromyml
 deployment.extensions/appdeploymentfromyml 
