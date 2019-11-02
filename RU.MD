@@ -1,7 +1,8 @@
-default is RU strategy not recreate. RC means all pods will be down (terminated) then they will get created.
+### Updating Application in K8
+###### Applications are tend to update/upgrade. The below guide aims to address how Applications are updated on Kubernetes.
+
+##### STEP#1: Create a Deployment:
 ```
-
-
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -37,6 +38,7 @@ spec:
         - containerPort: 8080
 
 ```
+##### STEP#2: Create a Service:
 ```
 
 apiVersion: v1
@@ -58,16 +60,19 @@ spec:
     app: appdeploymentfromyml
 
 ```
+###### By default, Kubernetes follows *RollingUpdate* strategy. According to this strategy at a single point of  time a certain number/percentage of pods will be killed and re-created. For example: Let say there are 100 pods and 10% pods are decided for Rolling Update Strategy, then, first 10 pods will be killed and 10 new pods will be re-created....and so on. The process will continue till all the 100 pods are updated. There is another strategy *Recreate* which comes with the cost of downtime. It will shoutdown all replicas and then recreate.
 
-strategy.type: RollingUpdate - There is another strategy- Recreate which will come with the cost of downtime. It will shoutdown all replicas and then updated and recreate.
+##### NOTE: While the RU is in action, the end user will experience the existing application. After all the pods are recreated, only then, the end user will experience the updated application. Rolling updates allows Deployments to occur with zero downtime by incrementally updating Pods instances with new ones.
+ 
+##### To understand the concept pictorically: 
+####### Follow the series of diagrams below. The Pod with Purple Image is the updated application which needs to be deployed. The Pod with Green Images refers to existing application. 
+![image](https://user-images.githubusercontent.com/45539698/68069142-41060480-fd82-11e9-9f74-fb8ccf2ac4ad.png)
 
-strategy.type: RollingUpdate - 0 Downtime. Example: Let say we have 100 Machines. RU will update first 10%, then another 10%.......
+![image](https://user-images.githubusercontent.com/45539698/68069139-30558e80-fd82-11e9-892a-c96c9ce74a9e.png)
 
-    
 
-During the update process - When the existing pods are getting terminated and new ones are getting created, the state of application remains as the previous one. Once all existing pods are terminated and new once are born , the stae of the application is updated (to new one).
 
-We can check the rollout activity 'LIVE' by:
+##### To check the rollout activity 'LIVE' execute:
 ```
 kubectl rollout status deployment appdeploymentfromyml
 OR
