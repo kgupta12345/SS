@@ -64,12 +64,50 @@ spec:
 
 ##### NOTE: While the RU is in action, the end user will experience the existing application. After all the pods are recreated, only then, the end user will experience the updated application. Rolling updates allows Deployments to occur with zero downtime by incrementally updating Pods instances with new ones.
  
-##### To understand the concept pictorically: 
+
+##### STEP#3: Re-Deploy with Updated image:
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kubernetes.io/change-cause: "ImageName: SpringBootDocker"
+  name: appdeploymentfromyml
+  labels:
+    app: appdeploymentfromyml
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: appdeploymentfromyml
+  selector:
+    matchLabels:
+      app: appdeploymentfromyml
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  minReadySeconds: 5
+  revisionHistoryLimit: 10    
+  template:
+    metadata:
+      labels:
+        app: appdeploymentfromyml
+    spec:
+      containers:
+      - name: appdeploymentfromyml
+        image: rahulvaish/springbootdocker-v2
+        ports:
+        - containerPort: 8080
+
+```
+##### To understand the above dynamics pictorically: 
 ####### Follow the series of diagrams below. The Pod with Purple Image is the updated application which needs to be deployed. The Pod with Green Images refers to existing application. 
+*STEP1 - STEP2*
 ![image](https://user-images.githubusercontent.com/45539698/68069239-9858a480-fd83-11e9-891d-b4ed0646a6bd.png)
-
+*STEP3 - STEP4*
 ![image](https://user-images.githubusercontent.com/45539698/68069252-d3f36e80-fd83-11e9-90f6-d51d20f783a7.png)
-
 
 ##### To check the rollout activity 'LIVE' execute:
 ```
