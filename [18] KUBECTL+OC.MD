@@ -15,5 +15,4 @@
 ![image](https://user-images.githubusercontent.com/45539698/68072277-1334b600-fdaa-11e9-9dfe-ef254d94dbe9.png)
 
 ##### STEP#3: Login
-![image](https://user-images.githubusercontent.com/45539698/68072306-52630700-fdaa-11e9-803a-b1b8db596a73.png)
-
+![image](https://user-images.githubusercontent.com/45539698/68072325-83dbd280-fdaa-11e9-8555-b16436e1309b.png)
