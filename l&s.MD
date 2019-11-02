@@ -320,3 +320,4 @@ spec:
 
 
 RC does not have ML definition so if you put ML | ML-ME . The YML DOES NOT COMPILES 
+![image](https://user-images.githubusercontent.com/45539698/68065382-75f86400-fd4e-11e9-962e-7b647b51d22f.png)
