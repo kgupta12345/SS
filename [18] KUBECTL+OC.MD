@@ -8,8 +8,9 @@
  [3] cd /usr/local/OSE/
  [4] ./oc 
  ```
-##### STEP#2: Get the Token
+##### STEP#2: Get the Token:
 ![image](https://user-images.githubusercontent.com/45539698/68072250-a8837a80-fda9-11e9-9b41-4fb49297aa92.png)
+</br>
 ![image](https://user-images.githubusercontent.com/45539698/68072277-1334b600-fdaa-11e9-9dfe-ef254d94dbe9.png)
 
 ##### STEP#3: Login OSE from Ubuntu Terminal:
