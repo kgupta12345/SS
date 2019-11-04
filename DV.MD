@@ -43,7 +43,7 @@ WARNING! This will remove:
 Are you sure you want to continue? [y/N] y
 Total reclaimed space: 0B
 
-
+______________________________________________________________________________
 
 bash-3.2$ docker volume prune
 WARNING! This will remove all local volumes not used by at least one container.
