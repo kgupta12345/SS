@@ -1,6 +1,6 @@
 ### Docker Volumes
 
-###### Volumes are _______. The below guide aims to setup and understand Volumes in Docker.
+###### Volumes are locations on host machine which persists the data for containers. The below guide aims to setup and understand Volumes in Docker.
 
 ##### STEP#1: Create a Docker Volume:
 ```
@@ -30,8 +30,9 @@ bash-3.2$ docker volume inspect mydockervolume
 ]
 bash-3.2$ 
 ```
+###### Sharing Docker Volumes refers to sharing this location: */var/lib/docker/volumes/mydockervolume/_data*  
 
-##### STEP#4: Delete the Docker Volume:
+##### STEP#4: Delete a Docker Volume:
 ```
 bash-3.2$ docker volume rm mydockervolume
 mydockervolume
@@ -67,10 +68,4 @@ docker exec -it testmysqldocker mysql -uroot -proot
 ![image](https://user-images.githubusercontent.com/45539698/68086080-cfa38000-fe6d-11e9-93b7-290f13c5c02c.png)
 ###### [6] On re-initiation of MySQL container on Docker it will be a *Fresh setup*. As your volume has been deleted - so executing the *```docker run....```* query (using manually created volume or runtime volume) will be a volume from scratch.</br>
 
-##### Share a Docker Volume:
-```
-```
 
-##### Bind Mounts
-```
-```
