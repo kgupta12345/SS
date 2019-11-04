@@ -22,9 +22,6 @@ docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL
 
 docker exec -it testmysqldocker mysql -uroot -proot
 ```
-
-![dockermysql](https://user-images.githubusercontent.com/689226/62350151-76028100-b51f-11e9-83ba-16c81dae6964.jpeg)
-
 ##### NOTE: Your MySQL container is bounded with a Volume. To experiment:
 ###### [1] Check MySQL is running using ```docker ps``` </br>
 ###### [2] Delete the volume using ```docker volume prune``` &rarr; The volume does not gets deleted. </br>
@@ -33,4 +30,4 @@ docker exec -it testmysqldocker mysql -uroot -proot
 ###### [5] Now you can't **start** the conatiner. The conatiner does not gets started, as we used  ``` docker system prune ``` </br>
 
 ![image](https://user-images.githubusercontent.com/45539698/68086080-cfa38000-fe6d-11e9-93b7-290f13c5c02c.png)
-###### [6] On re-initiation of MySQL container on Docker it will be a fresh setup. As your volume is deleted - so using a fresh volume or the same ow you can't **start** the conatiner &rarr; The conatiner does not gets started, as we used  ``` docker system prune ``` </br>
+###### [6] On re-initiation of MySQL container on Docker it will be a *Fresh setup*. As your volume has been deleted - so executing the *```docker run....```* query (using manual created volume or runtime volume) will be a volume from scratch.</br>
