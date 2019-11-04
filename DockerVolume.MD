@@ -22,6 +22,8 @@ docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL
 
 docker exec -it testmysqldocker mysql -uroot -proot
 ```
+<hr>
+
 ##### NOTE: Your MySQL container is bounded with a Volume. To experiment:
 ###### [1] Check MySQL is running using ```docker ps``` </br>
 ###### [2] Delete the volume using ```docker volume prune``` &rarr; The volume does not gets deleted. </br>
