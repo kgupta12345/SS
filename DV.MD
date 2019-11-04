@@ -30,7 +30,7 @@ bash-3.2$ docker volume inspect mydockervolume
 ]
 bash-3.2$ 
 ```
-###### Sharing Docker Volumes refers to sharing this location: */var/lib/docker/volumes/mydockervolume/_data*  
+###### *Sharing Docker Volumes refers to sharing this location: /var/lib/docker/volumes/mydockervolume/_data*  
 
 ##### STEP#4: Delete a Docker Volume:
 ```
