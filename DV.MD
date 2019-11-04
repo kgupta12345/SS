@@ -2,19 +2,36 @@
 
 ###### Volumes are _______. The below guide aims to setup and understand Volumes in Docker.
 
-##### Creating a Docker Volume:
+##### STEP#1: Create a Docker Volume:
 ```
 bash-3.2$ docker volume create mydockervolume
 mydockervolume
 ```
 
-##### List a Docker Volume:
+##### STEP#2: List the Docker Volume:
 ```
 bash-3.2$ docker volume ls
 local               mydockervolume
 ```
 
-##### Delete a Docker Volume:
+##### STEP#3: Investigate the Docker Volume:
+```
+bash-3.2$ docker volume inspect mydockervolume
+[
+    {
+        "CreatedAt": "2019-11-04T12:07:53Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/lib/docker/volumes/mydockervolume/_data",
+        "Name": "mydockervolume",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+bash-3.2$ 
+```
+
+##### STEP#4: Delete the Docker Volume:
 ```
 bash-3.2$ docker system prune
 WARNING! This will remove:
@@ -39,7 +56,7 @@ bash-3.2$
 
 ```
 
-##### Attach a Docker Volume:
+##### STEP#5: Attach a Docker Volume:
 ```
 ```
 
