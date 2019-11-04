@@ -2,20 +2,21 @@
 
 ###### To run MySQL image as container on Docker, follow the below steps:
 
+##### WAY#1: Use Data Directory on the Host System:
 ```
 docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v /Users/rvaish/mysqlbackup:/var/lib/mysql/  mysql
 
 docker exec -it testmysqldocker mysql -uroot -proot
 ```
 
-OR
+##### WAY#2: Use Runtime DockerVolume:
 ```
 docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql
 
 docker exec -it testmysqldocker mysql -uroot -proot
 ```
 
-OR
+##### WAY#3: Use DockerVolume: 
 ```
 docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v manualcreateddockervolume:/var/lib/mysql/  mysql
 
