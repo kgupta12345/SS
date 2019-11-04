@@ -9,19 +9,20 @@ docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL
 docker exec -it testmysqldocker mysql -uroot -proot
 ```
 
-  - ##### WAY#2: Use Runtime DockerVolume:
+  - ##### WAY#2: Use a DockerVolume: 
+```
+docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v manualcreateddockervolume:/var/lib/mysql/  mysql
+
+docker exec -it testmysqldocker mysql -uroot -proot
+```
+
+  - ##### WAY#3: Use Runtime DockerVolume:
 ```
 docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql
 
 docker exec -it testmysqldocker mysql -uroot -proot
 ```
 
-  - ##### WAY#3: Use a DockerVolume: 
-```
-docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v manualcreateddockervolume:/var/lib/mysql/  mysql
-
-docker exec -it testmysqldocker mysql -uroot -proot
-```
 <hr>
 
 ##### NOTE: Your MySQL container is bounded with a Volume. To experiment:
