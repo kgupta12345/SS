@@ -59,11 +59,59 @@ docker exec -it testmysqldocker mysql -uroot -proot
 ```
 
 ##### *NOTE: Your MySQL container is bounded with a Volume. To experiment:*
-###### [1] Check MySQL is running using ```docker ps``` </br>
-###### [2] Delete the volume using ```docker volume rm mydockervolume``` &rarr; The volume does not gets deleted. </br>
-###### [3] Stop the container ``` docker stop <container id>``` & then, try to delete the volume using ```docker volume rm mydockervolume``` &rarr; The volume does not gets deleted. </br>
-###### [4] Stop the container ``` docker stop <container id>``` and remove it using ``` docker container rm <container id>``` and then try to delete the volume using ```docker volume rm mydockervolume``` &rarr; The volume gets deleted. </br>
-###### [5] Now you can't start the container. The stopped container has been removed. </br>
-###### [6] On re-instantiating MySQL container on Docker it will be a *Fresh setup*. As your volume has been deleted - so executing the *```docker run....```* command (using manually created volume or runtime volume) will be a volume from scratch.</br>
+```
+bash-3.2$ docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql
+438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8
+
+
+
+bash-3.2$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
+438f7e343b4b        mysql               "docker-entrypoint.s…"   5 seconds ago       Up 3 seconds        0.0.0.0:3306->3306/tcp, 33060/tcp   testmysqldocker
+
+
+
+bash-3.2$ docker volume ls
+DRIVER              VOLUME NAME
+local               runtimemysqldockervolume
+
+
+
+bash-3.2$ docker volume rm runtimemysqldockervolume
+Error response from daemon: remove runtimemysqldockervolume: volume is in use - [438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8]
+
+
+
+bash-3.2$ docker stop 438f7e343b4b
+438f7e343b4b
+
+
+
+bash-3.2$ docker volume rm runtimemysqldockervolume
+Error response from daemon: remove runtimemysqldockervolume: volume is in use - [438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8]
+
+
+
+bash-3.2$ docker container rm 438f7e343b4b
+438f7e343b4b
+
+
+
+bash-3.2$ docker volume rm runtimemysqldockervolume
+runtimemysqldockervolume
+
+
+
+bash-3.2$ docker volume ls
+DRIVER              VOLUME NAME
+
+
+
+bash-3.2$ docker start 438f7e343b4b
+Error response from daemon: No such container: 438f7e343b4b
+Error: failed to start containers: 438f7e343b4b
+bash-3.2$ 
+
+```
 
 
