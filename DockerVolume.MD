@@ -28,9 +28,7 @@ docker exec -it testmysqldocker mysql -uroot -proot
 ##### *NOTE: Your MySQL container is bounded with a Volume. To experiment:*
 ###### [1] Check MySQL is running using ```docker ps``` </br>
 ###### [2] Delete the volume using ```docker volume prune``` &rarr; The volume does not gets deleted. </br>
-###### [3] **Stop** the container ``` docker stop <container id>``` & then try to delete the volume using ```docker volume prune``` &rarr; The volume does not gets deleted. </br>
-###### [4] Stop the container ``` docker stop <container id>``` and execute ``` docker system prune ``` and then use ```docker volume prune``` &rarr; The volume gets deleted. </br>
-###### [5] Now you can't start the container. Because, all the stopped containers were cleared upon ``` docker system prune ``` </br>
-
-![image](https://user-images.githubusercontent.com/45539698/68086080-cfa38000-fe6d-11e9-93b7-290f13c5c02c.png)
-###### [6] On re-initiation of MySQL container on Docker it will be a *Fresh SetUp*. As your volume has been deleted - so executing the *```docker run....```* command (using newly created or runtime volume) will refer to the volume from scratch.</br>
+###### [3] Stop the container ``` docker stop <container id>``` & then try to delete the volume using ```docker volume prune``` &rarr; The volume does not gets deleted. </br>
+###### [4] Stop the container ``` docker stop <container id>``` and also remove it ``` docker container rm <container id> ``` &rarr; The volume gets deleted. </br>
+###### [5] Now you can't re-start the container. Because, it has been deleted. </br>
+###### [6] On re-instantiating MySQL on Docker it will be a *Fresh SetUp*. As your volume has been deleted - so executing the *```docker run....```* command (using newly created or runtime volume) it will refer to the new/fresh volume.</br>
