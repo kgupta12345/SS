@@ -1,4 +1,4 @@
-### Docker + MySQL
+### MySQL on Docker
 
 ###### To run MySQL image as container on Docker, follow the below steps:
 
