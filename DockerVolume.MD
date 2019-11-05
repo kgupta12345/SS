@@ -137,7 +137,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql> use dev;
 Database changed
 mysql> show tables;
-<b> Empty set (0.00 sec) </b> 
+<b>Empty set (0.00 sec) </b> 
 mysql> exit;
 Bye
 bash-3.2$ 
