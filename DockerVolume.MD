@@ -26,9 +26,9 @@ docker exec -it testmysqldocker mysql -uroot -proot
 <hr>
 
 ##### *NOTE: Your MySQL container is bounded with a Volume. To experiment:*
-###### ACTIVITY#1: Check MySQL is running using ```docker ps``` </br>
-###### ACTIVITY#2: Delete the volume using ```docker volume prune``` &rarr; The volume does not gets deleted. </br>
-###### ACTIVITY#3: Stop the container ``` docker stop <container id>``` & then try to delete the volume using ```docker volume prune``` &rarr; The volume does not gets deleted. </br>
-###### ACTIVITY#4: Stop the container ``` docker stop <container id>``` and remove it ``` docker container rm <container id> ``` now again, try to delete the volume using ```docker volume prune``` &rarr; This time the volume gets deleted. </br>
-###### ACTIVITY#5: Try re-starting the container using ```docker start <container id>``` &rarr; You can't start the container because, it has been deleted. </br>
-###### ACTIVITY#6: Re-instantiate MySQL on Docker  it will be a *Fresh SetUp*. As your volume has been deleted - so executing the *```docker run....```* command (using newly created XXXX or runtime volume) it will refer to the new volume.</br>
+###### [1] Check MySQL is running using ```docker ps``` </br>
+###### [2] Delete the volume using ```docker volume rm mydockervolume``` &rarr; The volume does not gets deleted. </br>
+###### [3] Stop the container ``` docker stop <container id>``` & then, try to delete the volume using ```docker volume rm mydockervolume``` &rarr; The volume does not gets deleted. </br>
+###### [4] Stop the container ``` docker stop <container id>``` and remove it using ``` docker container rm <container id>``` and then try to delete the volume using ```docker volume rm mydockervolume``` &rarr; The volume gets deleted. </br>
+###### [5] Now you can't start the container. The stopped container has been removed. </br>
+###### [6] On re-instantiating MySQL container on Docker it will be a *Fresh setup*. As your volume has been deleted - so executing the *```docker run....```* command (using manually created volume or runtime volume) will be a volume from scratch.</br>
