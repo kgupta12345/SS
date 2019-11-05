@@ -28,18 +28,18 @@ docker exec -it testmysqldocker mysql -uroot -proot
 ##### *NOTE: Your MySQL container is bounded with a Volume. To experiment:*
 <pre>
 
-bash-3.2$ docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql
+bash-3.2$ <b> docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql </b>
 438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8
 
 
 
-bash-3.2$ docker ps
+bash-3.2$ <b> docker ps </b> 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
 438f7e343b4b        mysql               "docker-entrypoint.s…"   5 seconds ago       Up 3 seconds        0.0.0.0:3306->3306/tcp, 33060/tcp   testmysqldocker
 
 
 
-bash-3.2$ docker volume ls
+bash-3.2$ <b> docker volume ls </b> 
 DRIVER              VOLUME NAME
 local               runtimemysqldockervolume
 
