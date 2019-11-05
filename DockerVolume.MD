@@ -26,7 +26,8 @@ docker exec -it testmysqldocker mysql -uroot -proot
 <hr>
 
 ##### *NOTE: Your MySQL container is bounded with a Volume. To experiment:*
-```
+<pre>
+
 bash-3.2$ docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql
 438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8
 
@@ -142,5 +143,5 @@ Bye
 bash-3.2$ 
 
 
-```
+</pre>
 
