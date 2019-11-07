@@ -1,5 +1,52 @@
 ### Kubernetes Job
 
+
+##### STEP#1: Create a Java Class:
+```
+public class KubernetesHelloWorldJob {
+    public static void main(String[] args) {
+        System.out.println("HELLO STEP#1");
+        try {
+            Thread.sleep(25000);
+        } catch (Exception exception) {
+            System.out.println("ExceptionCaught");
+        }
+        System.out.println("HELLO STEP#2");
+
+    }
+}
+```
+##### STEP#2: Create a Dockerfile:
+```
+FROM java:8  
+COPY . /var/www/java  
+WORKDIR /var/www/java  
+RUN javac KubernetesHelloWorldJob.java  
+CMD ["java", "KubernetesHelloWorldJob"]
+```
+##### STEP#3: Create a Job:
+```
+vi kubejob.yml
+```
+```
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kuberneteshelloworldjob
+spec:
+  template:
+    spec:
+      containers:
+      - name: kuberneteshelloworldjob
+        image: rahulvaish/kuberneteshelloworldjob
+      restartPolicy: Never
+  backoffLimit: 4
+```
+```
+kubectl apply -f kubejob.yml
+```
+
+##### STEP#4: Check & Analyse:
 <pre>
 bash-3.2$ <b>kubectl get job</b>
 NAME                      COMPLETIONS   DURATION   AGE
@@ -35,8 +82,5 @@ Events:
   ----    ------            ----  ----            -------
   Normal  SuccessfulCreate  37s   job-controller  Created pod: kuberneteshelloworldjob-8dvvw
 bash-3.2$ 
-
-
-
 
 </pre>
