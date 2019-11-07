@@ -130,7 +130,7 @@ spec:
 kubectl apply -f kubecronjob.yml
 ```
 <pre>
-bash-3.2$ <b>kubectl get all<b>
+bash-3.2$ <b>kubectl get all</b>
 NAME                                           READY   STATUS      RESTARTS   AGE
 pod/kuberneteshelloworldjob-1573146840-4lnx8   0/1     Completed   0          2m30s
 pod/kuberneteshelloworldjob-1573146900-68wr6   0/1     Completed   0          89s
@@ -148,7 +148,7 @@ NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SC
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        35s             3m27s
 
 
-bash-3.2$ <b>kubectl get all<b>
+bash-3.2$ <b>kubectl get all</b>
 NAME                                           READY   STATUS      RESTARTS   AGE
 pod/kuberneteshelloworldjob-1573146900-68wr6   0/1     Completed   0          2m53s
 pod/kuberneteshelloworldjob-1573146960-dbw5d   0/1     Completed   0          113s
@@ -166,7 +166,7 @@ NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SC
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        58s             4m50s
 
 
-bash-3.2$ <b>kubectl get all<b>
+bash-3.2$ <b>kubectl get all</b>
 NAME                                           READY   STATUS      RESTARTS   AGE
 pod/kuberneteshelloworldjob-1573147080-4dv4h   0/1     Completed   0          2m14s
 pod/kuberneteshelloworldjob-1573147140-r6hdj   0/1     Completed   0          74s
