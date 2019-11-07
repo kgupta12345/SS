@@ -82,5 +82,17 @@ Events:
   ----    ------            ----  ----            -------
   Normal  SuccessfulCreate  37s   job-controller  Created pod: kuberneteshelloworldjob-8dvvw
 bash-3.2$ 
+</pre>
+
+###### Also:
+
+<pre>
+bash-3.2$ kubectl get pods
+NAME                            READY   STATUS      RESTARTS   AGE
+kuberneteshelloworldjob-8dvvw   0/1     Completed   0          12m
+bash-3.2$ kubectl logs kuberneteshelloworldjob-8dvvw
+HELLO STEP#1
+HELLO STEP#2
+bash-3.2$ 
 
 </pre>
