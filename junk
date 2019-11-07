@@ -1,23 +1,24 @@
 
-
-bash-3.2$ kubectl get all
+<pre>
+bash-3.2$ <b>kubectl get all</b>
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
 bash-3.2$ kubectl apply -f kubecronjob.yml 
 cronjob.batch/kuberneteshelloworldjob created
-bash-3.2$ kubectl get all
+
+
+
+bash-3.2$  <b>kubectl get all</b>
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
 
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        <none>          5s
-bash-3.2$ kubectl get all
-NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
+<b>[ABOVE: THE JOB GETS CREATED]</b>
 
-NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
-cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        <none>          17s
-bash-3.2$ kubectl get all
+
+
+bash-3.2$ <b>kubectl get all</b>
 NAME                                           READY   STATUS              RESTARTS   AGE
 pod/kuberneteshelloworldjob-1573148100-crn6j   0/1     ContainerCreating   0          6s
 
@@ -29,6 +30,10 @@ job.batch/kuberneteshelloworldjob-1573148100   0/1           6s         6s
 
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     1        11s             25s
+<b>[ABOVE: THE JOB INITIATES POD]</b>
+
+
+
 bash-3.2$ kubectl describe job kuberneteshelloworldjob-1573148100
 Name:           kuberneteshelloworldjob-1573148100
 Namespace:      default
@@ -255,3 +260,4 @@ The Meassage
 bash-3.2$ kubectl logs  pod kuberneteshelloworldjob-1573148100-crn6j
 Error from server (NotFound): pods "pod" not found
 bash-3.2$ 
+</pre>
