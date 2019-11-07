@@ -1,5 +1,6 @@
 ### Kubernetes Job
 
+#### BATCH JOBS
 
 ##### STEP#1: Create a Java Class:
 ```
@@ -85,14 +86,20 @@ bash-3.2$
 </pre>
 
 ###### Also:
-
 <pre>
-bash-3.2$ kubectl get pods
+bash-3.2$ <b>kubectl get pods</b>
 NAME                            READY   STATUS      RESTARTS   AGE
 kuberneteshelloworldjob-8dvvw   0/1     Completed   0          12m
-bash-3.2$ kubectl logs kuberneteshelloworldjob-8dvvw
+bash-3.2$ <b>kubectl logs kuberneteshelloworldjob-8dvvw</b>
 HELLO STEP#1
 HELLO STEP#2
 bash-3.2$ 
 
 </pre>
+##### NOTE: After the job is completed the Job status becomes 1/1 but the pod status becomes 0/1.
+
+<hr>
+
+#### CRON JOBS
+
+##### STEP#1: 
