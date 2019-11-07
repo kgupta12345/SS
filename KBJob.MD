@@ -123,9 +123,66 @@ spec:
             args:
             - /bin/sh
             - -c
-            - echo The Meassage
+            - echo The Message
           restartPolicy: OnFailure
 ```
 ```
 kubectl apply -f kubecronjob.yml
 ```
+<pre>
+bash-3.2$ <b>kubectl get all<b>
+NAME                                           READY   STATUS      RESTARTS   AGE
+pod/kuberneteshelloworldjob-1573146840-4lnx8   0/1     Completed   0          2m30s
+pod/kuberneteshelloworldjob-1573146900-68wr6   0/1     Completed   0          89s
+pod/kuberneteshelloworldjob-1573146960-dbw5d   0/1     Completed   0          29s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
+
+NAME                                           COMPLETIONS   DURATION   AGE
+job.batch/kuberneteshelloworldjob-1573146840   1/1           9s         2m31s
+job.batch/kuberneteshelloworldjob-1573146900   1/1           8s         90s
+job.batch/kuberneteshelloworldjob-1573146960   1/1           8s         30s
+
+NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        35s             3m27s
+
+
+bash-3.2$ <b>kubectl get all<b>
+NAME                                           READY   STATUS      RESTARTS   AGE
+pod/kuberneteshelloworldjob-1573146900-68wr6   0/1     Completed   0          2m53s
+pod/kuberneteshelloworldjob-1573146960-dbw5d   0/1     Completed   0          113s
+pod/kuberneteshelloworldjob-1573147020-5l2br   0/1     Completed   0          53s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
+
+NAME                                           COMPLETIONS   DURATION   AGE
+job.batch/kuberneteshelloworldjob-1573146900   1/1           8s         2m53s
+job.batch/kuberneteshelloworldjob-1573146960   1/1           8s         113s
+job.batch/kuberneteshelloworldjob-1573147020   1/1           9s         53s
+
+NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        58s             4m50s
+
+
+bash-3.2$ <b>kubectl get all<b>
+NAME                                           READY   STATUS      RESTARTS   AGE
+pod/kuberneteshelloworldjob-1573147080-4dv4h   0/1     Completed   0          2m14s
+pod/kuberneteshelloworldjob-1573147140-r6hdj   0/1     Completed   0          74s
+pod/kuberneteshelloworldjob-1573147200-hv6g9   0/1     Completed   0          14s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
+
+NAME                                           COMPLETIONS   DURATION   AGE
+job.batch/kuberneteshelloworldjob-1573147080   1/1           8s         2m14s
+job.batch/kuberneteshelloworldjob-1573147140   1/1           8s         74s
+job.batch/kuberneteshelloworldjob-1573147200   1/1           9s         14s
+
+NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        19s             7m11s
+bash-3.2$ 
+
+
+</pre>
