@@ -147,7 +147,7 @@ NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SC
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        <none>          5s
 <b>[ABOVE: THE JOB GETS CREATED]</b>
 
-
+<hr>
 
 bash-3.2$ <b>kubectl get all</b>
 NAME                                           READY   STATUS              RESTARTS   AGE
