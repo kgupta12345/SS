@@ -139,7 +139,6 @@ cronjob.batch/kuberneteshelloworldjob created
 
 <hr>
 
-
 bash-3.2$  <b>kubectl get all</b>
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
@@ -149,7 +148,6 @@ cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        <none> 
 <b>[ABOVE: THE CRONJOB GETS CREATED]</b>
 
 <hr>
-
 
 bash-3.2$ <b>kubectl get all</b>
 NAME                                           READY   STATUS              RESTARTS   AGE
@@ -166,7 +164,6 @@ cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     1        11s    
 <b>[ABOVE: THE CRONJOB INITIATES JOB AND THEN A POD]</b>
 
 <hr>
-
 
 bash-3.2$ <br>kubectl describe job kuberneteshelloworldjob-1573148100</br>
 Name:           kuberneteshelloworldjob-1573148100
@@ -204,8 +201,7 @@ Events:
 bash-3.2$ 
 
 <hr>
-
-        
+    
 bash-3.2$ <b>kubectl describe pod kuberneteshelloworldjob-1573148100-crn6j</b>
 Name:               kuberneteshelloworldjob-1573148100-crn6j
 Namespace:          default
