@@ -1,9 +1,9 @@
 ### Kubernetes Job
 
-#### BATCH JOBS
+###### BATCH JOBS
 
 ##### STEP#1: Create a Java Class:
-```
+<pre>
 public class KubernetesHelloWorldJob {
     public static void main(String[] args) {
         System.out.println("HELLO STEP#1");
@@ -16,15 +16,15 @@ public class KubernetesHelloWorldJob {
 
     }
 }
-```
+</pre>
 ##### STEP#2: Create a Dockerfile:
-```
+<pre>
 FROM java:8  
 COPY . /var/www/java  
 WORKDIR /var/www/java  
 RUN javac KubernetesHelloWorldJob.java  
 CMD ["java", "KubernetesHelloWorldJob"]
-```
+</pre>
 ##### STEP#3: Create a Job:
 ```
 vi kubejob.yml
@@ -100,6 +100,32 @@ bash-3.2$
 
 <hr>
 
-#### CRON JOBS
+###### CRON JOBS
 
-##### STEP#1: 
+##### STEP#3: Create a Job:
+```
+vi kubecronjob.yml
+```
+```
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: kuberneteshelloworldjob
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: kuberneteshelloworldjob
+            image: rahulvaish/kuberneteshelloworldjob
+            args:
+            - /bin/sh
+            - -c
+            - echo The Meassage
+          restartPolicy: OnFailure
+```
+```
+kubectl apply -f kubecronjob.yml
+```
