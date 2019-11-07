@@ -148,6 +148,7 @@ NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SC
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        35s             3m27s
 
 
+
 bash-3.2$ <b>kubectl get all</b>
 NAME                                           READY   STATUS      RESTARTS   AGE
 pod/kuberneteshelloworldjob-1573146900-68wr6   0/1     Completed   0          2m53s
@@ -164,6 +165,7 @@ job.batch/kuberneteshelloworldjob-1573147020   1/1           9s         53s
 
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        58s             4m50s
+
 
 
 bash-3.2$ <b>kubectl get all</b>
