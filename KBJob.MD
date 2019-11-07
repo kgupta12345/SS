@@ -137,6 +137,7 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
 bash-3.2$ kubectl apply -f kubecronjob.yml 
 cronjob.batch/kuberneteshelloworldjob created
 
+<hr>
 
 
 bash-3.2$  <b>kubectl get all</b>
@@ -145,9 +146,10 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
 
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        <none>          5s
-<b>[ABOVE: THE JOB GETS CREATED]</b>
+<b>[ABOVE: THE CRONJOB GETS CREATED]</b>
 
 <hr>
+
 
 bash-3.2$ <b>kubectl get all</b>
 NAME                                           READY   STATUS              RESTARTS   AGE
@@ -161,11 +163,12 @@ job.batch/kuberneteshelloworldjob-1573148100   0/1           6s         6s
 
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     1        11s             25s
-<b>[ABOVE: THE JOB INITIATES POD]</b>
+<b>[ABOVE: THE CRONJOB INITIATES JOB AND THEN A POD]</b>
+
+<hr>
 
 
-
-bash-3.2$ kubectl describe job kuberneteshelloworldjob-1573148100
+bash-3.2$ <br>kubectl describe job kuberneteshelloworldjob-1573148100</br>
 Name:           kuberneteshelloworldjob-1573148100
 Namespace:      default
 Selector:       controller-uid=ef8e3647-0184-11ea-8fa3-025000000001
@@ -197,137 +200,13 @@ Pod Template:
 Events:
   Type    Reason            Age   From            Message
   ----    ------            ----  ----            -------
-  Normal  SuccessfulCreate  22s   job-controller  Created pod: kuberneteshelloworldjob-1573148100-crn6j
+  Normal  SuccessfulCreate  22s   job-controller  <b>Created pod: kuberneteshelloworldjob-1573148100-crn6j</b>
 bash-3.2$ 
-bash-3.2$ 
-bash-3.2$ 
-bash-3.2$ kubectl get all
-NAME                                           READY   STATUS      RESTARTS   AGE
-pod/kuberneteshelloworldjob-1573148100-crn6j   0/1     Completed   0          28s
 
-NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
+<hr>
 
-NAME                                           COMPLETIONS   DURATION   AGE
-job.batch/kuberneteshelloworldjob-1573148100   1/1           8s         28s
-
-NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
-cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        33s             47s
-bash-3.2$ kubectl describe pod kuberneteshelloworldjob-1573148100-crn6j
-Name:               kuberneteshelloworldjob-1573148100-crn6j
-Namespace:          default
-Priority:           0
-PriorityClassName:  <none>
-Node:               docker-desktop/192.168.65.3
-Start Time:         Thu, 07 Nov 2019 23:05:05 +0530
-Labels:             controller-uid=ef8e3647-0184-11ea-8fa3-025000000001
-                    job-name=kuberneteshelloworldjob-1573148100
-Annotations:        <none>
-Status:             Succeeded
-IP:                 10.1.5.183
-Controlled By:      Job/kuberneteshelloworldjob-1573148100
-Containers:
-  kuberneteshelloworldjob:
-    Container ID:  docker://307e11110dc6b48c50623f19dd262019ed801dfaec6c578c2ed81de9696aa796
-    Image:         rahulvaish/kuberneteshelloworldjob
-    Image ID:      docker-pullable://rahulvaish/kuberneteshelloworldjob@sha256:e732c3c2fcd16cd2b0baa7a738203003e0303c25aa4e89a07981fd3efa1c7079
-    Port:          <none>
-    Host Port:     <none>
-    Args:
-      /bin/sh
-      -c
-      echo The Meassage
-    State:          Terminated
-      Reason:       Completed
-      Exit Code:    0
-      Started:      Thu, 07 Nov 2019 23:05:12 +0530
-      Finished:     Thu, 07 Nov 2019 23:05:12 +0530
-    Ready:          False
-    Restart Count:  0
-    Environment:    <none>
-    Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from default-token-8w2q2 (ro)
-Conditions:
-  Type              Status
-  Initialized       True 
-  Ready             False 
-  ContainersReady   False 
-  PodScheduled      True 
-Volumes:
-  default-token-8w2q2:
-    Type:        Secret (a volume populated by a Secret)
-    SecretName:  default-token-8w2q2
-    Optional:    false
-QoS Class:       BestEffort
-Node-Selectors:  <none>
-Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                 node.kubernetes.io/unreachable:NoExecute for 300s
-Events:
-  Type    Reason     Age   From                     Message
-  ----    ------     ----  ----                     -------
-  Normal  Scheduled  46s   default-scheduler        Successfully assigned default/kuberneteshelloworldjob-1573148100-crn6j to docker-desktop
-  Normal  Pulling    45s   kubelet, docker-desktop  Pulling image "rahulvaish/kuberneteshelloworldjob"
-  Normal  Pulled     39s   kubelet, docker-desktop  Successfully pulled image "rahulvaish/kuberneteshelloworldjob"
-  Normal  Created    39s   kubelet, docker-desktop  Created container kuberneteshelloworldjob
-  Normal  Started    39s   kubelet, docker-desktop  Started container kuberneteshelloworldjob
-bash-3.2$ kubectl describe pod kuberneteshelloworldjob-1573148100-crn6j
-Name:               kuberneteshelloworldjob-1573148100-crn6j
-Namespace:          default
-Priority:           0
-PriorityClassName:  <none>
-Node:               docker-desktop/192.168.65.3
-Start Time:         Thu, 07 Nov 2019 23:05:05 +0530
-Labels:             controller-uid=ef8e3647-0184-11ea-8fa3-025000000001
-                    job-name=kuberneteshelloworldjob-1573148100
-Annotations:        <none>
-Status:             Succeeded
-IP:                 10.1.5.183
-Controlled By:      Job/kuberneteshelloworldjob-1573148100
-Containers:
-  kuberneteshelloworldjob:
-    Container ID:  docker://307e11110dc6b48c50623f19dd262019ed801dfaec6c578c2ed81de9696aa796
-    Image:         rahulvaish/kuberneteshelloworldjob
-    Image ID:      docker-pullable://rahulvaish/kuberneteshelloworldjob@sha256:e732c3c2fcd16cd2b0baa7a738203003e0303c25aa4e89a07981fd3efa1c7079
-    Port:          <none>
-    Host Port:     <none>
-    Args:
-      /bin/sh
-      -c
-      echo The Meassage
-    State:          Terminated
-      Reason:       Completed
-      Exit Code:    0
-      Started:      Thu, 07 Nov 2019 23:05:12 +0530
-      Finished:     Thu, 07 Nov 2019 23:05:12 +0530
-    Ready:          False
-    Restart Count:  0
-    Environment:    <none>
-    Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from default-token-8w2q2 (ro)
-Conditions:
-  Type              Status
-  Initialized       True 
-  Ready             False 
-  ContainersReady   False 
-  PodScheduled      True 
-Volumes:
-  default-token-8w2q2:
-    Type:        Secret (a volume populated by a Secret)
-    SecretName:  default-token-8w2q2
-    Optional:    false
-QoS Class:       BestEffort
-Node-Selectors:  <none>
-Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                 node.kubernetes.io/unreachable:NoExecute for 300s
-Events:
-  Type    Reason     Age   From                     Message
-  ----    ------     ----  ----                     -------
-  Normal  Scheduled  52s   default-scheduler        Successfully assigned default/kuberneteshelloworldjob-1573148100-crn6j to docker-desktop
-  Normal  Pulling    51s   kubelet, docker-desktop  Pulling image "rahulvaish/kuberneteshelloworldjob"
-  Normal  Pulled     45s   kubelet, docker-desktop  Successfully pulled image "rahulvaish/kuberneteshelloworldjob"
-  Normal  Created    45s   kubelet, docker-desktop  Created container kuberneteshelloworldjob
-  Normal  Started    45s   kubelet, docker-desktop  Started container kuberneteshelloworldjob
-bash-3.2$ kubectl describe pod kuberneteshelloworldjob-1573148100-crn6j
+        
+bash-3.2$ <b>kubectl describe pod kuberneteshelloworldjob-1573148100-crn6j</b>
 Name:               kuberneteshelloworldjob-1573148100-crn6j
 Namespace:          default
 Priority:           0
