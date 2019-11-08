@@ -286,7 +286,7 @@ cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     1        11s    
 </pre>
 ##### *```NOTE```:CronJob initiates a Job which instantiate a Pod.*
 ###### *STEP#4: Get details of Job:*
-</pre>
+<pre>
 bash-3.2$ <br>kubectl describe job kuberneteshelloworldjob-1573148100</br>
 Name:           kuberneteshelloworldjob-1573148100
 Namespace:      default
