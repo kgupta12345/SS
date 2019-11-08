@@ -15,7 +15,7 @@ local               mydockervolume
 ```
 
 ##### STEP#3: Investigate the Docker Volume:
-```
+<pre>
 bash-3.2$ docker volume inspect mydockervolume
 [
     {
@@ -29,9 +29,9 @@ bash-3.2$ docker volume inspect mydockervolume
     }
 ]
 bash-3.2$ 
-```
-##### ```NOTE```: Sharing Docker Volumes refers to sharing this location: /var/lib/docker/volumes/mydockervolume/_data  
 
+##### ```NOTE```: Sharing Docker Volumes refers to sharing this location: /var/lib/docker/volumes/mydockervolume/_data  
+</pre>
 ##### STEP#4: Delete a Docker Volume:
 ```
 bash-3.2$ docker volume rm mydockervolume
