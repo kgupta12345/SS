@@ -85,7 +85,7 @@ Events:
 bash-3.2$ 
 </pre>
 
-###### The Job initiates Pod. Therefore on listing pods using ```kubectl get pods``` it shows ```kuberneteshelloworldjob-8dvvw ```
+###### The Job initiates Pod. Therefore on listing pods using ```kubectl get pods``` it shows ```kuberneteshelloworldjob-8dvvw ``` which can be verified using (above) ```kubectl describe job kuberneteshelloworldjob```
 <pre>
 bash-3.2$ <b>kubectl get pods</b>
 NAME                            READY   STATUS      RESTARTS   AGE
