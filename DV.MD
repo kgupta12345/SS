@@ -3,20 +3,20 @@
 ###### Volumes are locations on host machine which persists the data for containers. The below guide aims to setup and understand Volumes in Docker.
 
 ##### STEP#1: Create a Docker Volume:
-```
-bash-3.2$ docker volume create mydockervolume
+<pre>
+bash-3.2$ <b>docker volume create mydockervolume</b>
 mydockervolume
-```
+</pre>
 
 ##### STEP#2: List the Docker Volume:
-```
-bash-3.2$ docker volume ls
+<pre>
+bash-3.2$ <b>docker volume ls</b>
 local               mydockervolume
-```
+</pre>
 
 ##### STEP#3: Investigate the Docker Volume:
 <pre>
-bash-3.2$ docker volume inspect mydockervolume
+bash-3.2$ <b>docker volume inspect mydockervolume</b>
 [
     {
         "CreatedAt": "2019-11-04T12:07:53Z",
@@ -29,18 +29,19 @@ bash-3.2$ docker volume inspect mydockervolume
     }
 ]
 bash-3.2$ 
+</pre>
 
 ##### ```NOTE```: Sharing Docker Volumes refers to sharing this location: /var/lib/docker/volumes/mydockervolume/_data  
-</pre>
+
 ##### STEP#4: Delete a Docker Volume:
-```
-bash-3.2$ docker volume rm mydockervolume
+<pre>
+bash-3.2$ <b>docker volume rm mydockervolume</b>
 mydockervolume
-```
+</pre>
 ###### To Delete all unused-local docker volumes
 
-```
-bash-3.2$ docker volume prune
+<pre>
+bash-3.2$ <b>docker volume prune</b>
 WARNING! This will remove all local volumes not used by at least one container.
 Are you sure you want to continue? [y/N] y
 Deleted Volumes:
@@ -49,15 +50,12 @@ mydockervolume
 Total reclaimed space: 0B
 bash-3.2$ 
 
-```
+</pre>
 ##### STEP#5: Attach a Docker Volume with Container (MySQL):
-```
-docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -mydockervolume:/var/lib/mysql/  mysql
-```
-```
-docker exec -it testmysqldocker mysql -uroot -proot
-```
-##### *Your MySQL container is bounded with a Volume. Check & Analyse:*
+
+| **EXPERIMENT**: To Understand MySQL container is bounded with a Volume.  |
+| --- |
+
 ###### *STEP#1: Launch MySQL Container:*
 <pre>
 bash-3.2$ <b>docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql </b>
@@ -153,7 +151,7 @@ bash-3.2$
 bash-3.2$ <b>docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql </b> 
 8388e3db25a2ffa577b0b36bf3b32422829112f34a37955f6b9241a253a32af3
 </pre>
-###### *STEP#13: Check inside the MySQL Container:*
+###### *STEP#13: Check tinside the MySQL Container:*
 <pre>
 bash-3.2$ <b>docker exec -it testmysqldocker mysql -uroot -proot </b> 
 mysql: [Warning] Using a password on the command line interface can be insecure.
@@ -179,7 +177,4 @@ bash-3.2$
 </pre>
 ##### *```NOTE```: As we have deleted the runtimemysqldockervolume and now we are re-instantiating  MySQL Container with a new volume (same name), but as obvious, it won't carry/have anything of past volume, as its new!*
 </pre>
-
-
-
 
