@@ -249,16 +249,18 @@ spec:
 ```
 kubectl apply -f kubecronjob.yml
 ```
-
+##### *Your Jobs are running. Check & Analyse:*
+###### *STEP#1: Get the status of Job & Pods:*
 <pre>
 bash-3.2$ <b>kubectl get all</b>
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
 bash-3.2$ kubectl apply -f kubecronjob.yml 
 cronjob.batch/kuberneteshelloworldjob created
+</pre>
 
-<hr>
-
+###### *STEP#2: Get the status of Job & Pods:*
+<pre>
 bash-3.2$  <b>kubectl get all</b>
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
@@ -266,9 +268,9 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        <none>          5s
 <b>[ABOVE: THE CRONJOB GETS CREATED]</b>
-
-<hr>
-
+</pre>
+###### *STEP#3: Get the status of Job & Pods:*
+<pre>
 bash-3.2$ <b>kubectl get all</b>
 NAME                                           READY   STATUS              RESTARTS   AGE
 pod/kuberneteshelloworldjob-1573148100-crn6j   0/1     ContainerCreating   0          6s
@@ -281,10 +283,9 @@ job.batch/kuberneteshelloworldjob-1573148100   0/1           6s         6s
 
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     1        11s             25s
-<b>[ABOVE: THE CRONJOB INITIATES JOB AND THEN A POD]</b>
-
-<hr>
-
+###### *```NOTE```:CronJob initiates a Job which instantiate a Pod.*
+###### *STEP#4: Get details of Job:*
+</pre>
 bash-3.2$ <br>kubectl describe job kuberneteshelloworldjob-1573148100</br>
 Name:           kuberneteshelloworldjob-1573148100
 Namespace:      default
@@ -319,9 +320,10 @@ Events:
   ----    ------            ----  ----            -------
   Normal  SuccessfulCreate  22s   job-controller  <b>Created pod: kuberneteshelloworldjob-1573148100-crn6j</b>
 bash-3.2$ 
-
-<hr>
+</pre>
     
+###### *STEP#5: Get the status of Pod:*
+<pre>    
 bash-3.2$ <b>kubectl describe pod kuberneteshelloworldjob-1573148100-crn6j</b>
 Name:               kuberneteshelloworldjob-1573148100-crn6j
 Namespace:          default
@@ -378,12 +380,5 @@ Events:
   Normal  Pulling    67s   kubelet, docker-desktop  Pulling image "rahulvaish/kuberneteshelloworldjob"
   Normal  Pulled     61s   kubelet, docker-desktop  Successfully pulled image "rahulvaish/kuberneteshelloworldjob"
   Normal  Created    61s   kubelet, docker-desktop  Created container kuberneteshelloworldjob
-  Normal  Started    61s   kubelet, docker-desktop  Started container kuberneteshelloworldjob
-bash-3.2$ kubectl describe logs  kuberneteshelloworldjob-1573148100-crn6j
-error: the server doesn't have a resource type "logs"
-bash-3.2$ kubectl logs  kuberneteshelloworldjob-1573148100-crn6j
-The Meassage
-bash-3.2$ kubectl logs  pod kuberneteshelloworldjob-1573148100-crn6j
-Error from server (NotFound): pods "pod" not found
-bash-3.2$ 
+  Normal  Started    61s   kubelet, docker-desktop  Started container kuberneteshelloworldjob  
 </pre>
