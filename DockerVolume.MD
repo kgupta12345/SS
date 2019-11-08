@@ -25,7 +25,7 @@ docker exec -it testmysqldocker mysql -uroot -proot
 
 <hr>
 
-##### *NOTE: Your MySQL container is bounded with a Volume. To experiment:*
+##### *NOTE: Your MySQL container is bounded with a Volume. Check & Analyse:*
 <pre>
 bash-3.2$ <b>docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql </b>
 438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8
@@ -40,6 +40,7 @@ bash-3.2$ <b>docker volume ls </b>
 DRIVER              VOLUME NAME
 local               runtimemysqldockervolume
 </pre>
+##### ```NOTE```: The MySQL container is running and is bounded with runtimemysqldockervolume (/var/lib/docker/volumes/)
 <pre>
 bash-3.2$ <b>docker exec -it testmysqldocker mysql -uroot -proot </b> 
 mysql: [Warning] Using a password on the command line interface can be insecure.
@@ -72,6 +73,7 @@ mysql> exit;
 Bye
 bash-3.2$ 
 </pre>
+##### ```NOTE```: We have created a table inside MySQL container - bounded with runtimemysqldockervolume (/var/lib/docker/volumes/)
 <pre>
 bash-3.2$ <b>docker volume rm runtimemysqldockervolume </b> 
 Error response from daemon: remove runtimemysqldockervolume: volume is in use - [438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8]
@@ -96,12 +98,14 @@ runtimemysqldockervolume
 bash-3.2$ <b>docker volume ls </b> 
 DRIVER              VOLUME NAME
 </pre>
+##### ```NOTE```: Volume runtimemysqldockervolume (/var/lib/docker/volumes/) can only be deleted if we stop and delete the MySQL container.
 <pre>
 bash-3.2$ <b>docker start 438f7e343b4b </b> 
 Error response from daemon: No such container: 438f7e343b4b
 Error: failed to start containers: 438f7e343b4b
 bash-3.2$ 
 </pre>
+##### ```NOTE```: Once the container is deleted, it cant be re-started.
 <pre>
 bash-3.2$ <b>docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql </b> 
 8388e3db25a2ffa577b0b36bf3b32422829112f34a37955f6b9241a253a32af3
@@ -129,6 +133,6 @@ mysql> exit;
 Bye
 bash-3.2$ 
 </pre>
-
+##### ```NOTE```: As earlier, we deleted the volume and now we are re-creating the new MySQL container with a new volume (same name), but as obvious, it won't carry/have anything of past volume, as its new! 
 </pre>
 
