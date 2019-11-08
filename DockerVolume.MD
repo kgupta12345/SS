@@ -28,7 +28,7 @@ docker exec -it testmysqldocker mysql -uroot -proot
 
 <hr>
 
-##### *Your MySQL container is bounded with a Volume. Check & Analyse:*
+### *Your MySQL container is bounded with a Volume. Check & Analyse:*
 <br>
 
 ###### *STEP#1: Launch MySQL Container:*
