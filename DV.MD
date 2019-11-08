@@ -1,6 +1,6 @@
 ### Docker Volumes
 
-###### Volumes are locations on host machine which persists the data for containers. The below guide aims to setup and understand Volumes in Docker.
+###### Volumes are locations on host machine which persists the data for containers. The below guide aims basic operations to do with Docker Volumes.
 
 ##### STEP#1: Create a Docker Volume:
 <pre>
@@ -51,6 +51,7 @@ Total reclaimed space: 0B
 bash-3.2$ 
 
 </pre>
+
 ##### STEP#5: Attach a Docker Volume with Container (MySQL):
 
 | **EXPERIMENT**: To Understand MySQL container is bounded with a Volume.  |
