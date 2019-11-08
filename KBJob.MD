@@ -46,7 +46,7 @@ spec:
 ```
 kubectl apply -f kubejob.yml
 ```
-<hr>
+
 | EXPERIMENT: To Understand Jobs & Pods |
 | --- |
 
@@ -155,7 +155,8 @@ bash-3.2$
 </pre>
 
 ##### *```NOTE```: After both Job iteartions are completed, the status becomes 2/2, which means, out of 2 Job iterations, both are completed. Also, as each iteration instantiate 1 Pod, and their desired tasks are completed, so 0/1 status comes against each Pod.*
-<hr>
+
+<br>
 
 ##### STEP#5: Create a ```Parallel``` Job: 
 ```
@@ -180,9 +181,10 @@ spec:
 ```
 kubectl apply -f kubejobpar.yml
 ```
-<hr>
+
 | EXPERIMENT: To Understand Jobs & Pods |
 | --- |
+
 ###### *STEP#1: Get the status of Pods:*
 <pre>
 bash-3.2$ <b>kubectl get pods</b>
@@ -251,7 +253,10 @@ spec:
 ```
 kubectl apply -f kubecronjob.yml
 ```
-##### *Your Jobs are running. Check & Analyse:*
+
+| EXPERIMENT: To Understand Jobs & Pods |
+| --- |
+
 ###### *STEP#1: Get the status of Job & Pods:*
 <pre>
 bash-3.2$ <b>kubectl get all</b>
@@ -385,3 +390,5 @@ Events:
   Normal  Created    61s   kubelet, docker-desktop  Created container kuberneteshelloworldjob
   Normal  Started    61s   kubelet, docker-desktop  Started container kuberneteshelloworldjob  
 </pre>
+
+<hr>
