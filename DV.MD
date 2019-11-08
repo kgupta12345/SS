@@ -63,3 +63,5 @@ mydockervolume
     bash-3.2$ <b>docker volume ls </b> 
     DRIVER              VOLUME NAME
     </pre>
+
+<hr>
