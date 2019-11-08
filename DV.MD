@@ -48,7 +48,7 @@ mydockervolume
 </pre>
 ###### Delete Docker Volume when attached with container(Here, MySQL):
 <pre>
-bash-3.2$ docker stop 438f7e343b4b  
+bash-3.2$ <b>docker stop 438f7e343b4b</b>  
 438f7e343b4b 
 </pre>
 <pre>
