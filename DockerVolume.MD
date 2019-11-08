@@ -26,25 +26,25 @@ docker exec -it testmysqldocker mysql -uroot -proot
 <hr>
 
 ##### *NOTE: Your MySQL container is bounded with a Volume. Check & Analyse:*
-##### *STEP#1: Launch MySQL Container:*
+###### *STEP#1: Launch MySQL Container:*
 <pre>
 bash-3.2$ <b>docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql </b>
 438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8
 </pre>
-##### *STEP#2: Check the status of MySQL Container:*
+###### *STEP#2: Check the status of MySQL Container:*
 <pre>
 bash-3.2$ <b>docker ps </b> 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
 438f7e343b4b        mysql               "docker-entrypoint.s…"   5 seconds ago       Up 3 seconds        0.0.0.0:3306->3306/tcp, 33060/tcp   testmysqldocker
 </pre>
-##### *STEP#3: Check the status of MySQL bounded Volume:*
+###### *STEP#3: Check the status of MySQL bounded Volume:*
 <pre>
 bash-3.2$ <b>docker volume ls </b> 
 DRIVER              VOLUME NAME
 local               runtimemysqldockervolume
 </pre>
 ###### *```NOTE```: The MySQL container is running and is bounded with runtimemysqldockervolume (/var/lib/docker/volumes/)*
-##### *STEP#4: Create a table inside MySQL Container:*
+###### *STEP#4: Create a table inside MySQL Container:*
 <pre>
 bash-3.2$ <b>docker exec -it testmysqldocker mysql -uroot -proot </b> 
 mysql: [Warning] Using a password on the command line interface can be insecure.
@@ -77,38 +77,38 @@ mysql> exit;
 Bye
 bash-3.2$ 
 </pre>
-##### *STEP#5: Delete Docker Volume[1/5]:*
+###### *STEP#5: Delete Docker Volume[1/5]:*
 <pre>
 bash-3.2$ <b>docker volume rm runtimemysqldockervolume </b> 
 Error response from daemon: remove runtimemysqldockervolume: volume is in use - [438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8]
 </pre>
-##### *STEP#6: Delete Docker Volume[2/5]:*
+###### *STEP#6: Delete Docker Volume[2/5]:*
 <pre>
 bash-3.2$ <b>docker stop 438f7e343b4b </b> 
 438f7e343b4b
 </pre>
-##### *STEP#7: Delete Docker Volume[3/5]:*
+###### *STEP#7: Delete Docker Volume[3/5]:*
 <pre>
 bash-3.2$ <b>docker volume rm runtimemysqldockervolume </b> 
 Error response from daemon: remove runtimemysqldockervolume: volume is in use - [438f7e343b4b46d9ffbc7a517d1ec151b89efa1b2a90bf4d1a165c5f95bc4ee8]
 </pre>
-##### *STEP#8: Delete Docker Volume[4/5]:*
+###### *STEP#8: Delete Docker Volume[4/5]:*
 <pre>
 bash-3.2$ <b>docker container rm 438f7e343b4b </b> 
 438f7e343b4b
 </pre>
-##### *STEP#9: Delete Docker Volume[5/5]:*
+###### *STEP#9: Delete Docker Volume[5/5]:*
 <pre>
 bash-3.2$ <b>docker volume rm runtimemysqldockervolume </b> 
 runtimemysqldockervolume
 </pre>
-##### *STEP#10: Check the status of Docker Volume:*
+###### *STEP#10: Check the status of Docker Volume:*
 <pre>
 bash-3.2$ <b>docker volume ls </b> 
 DRIVER              VOLUME NAME
 </pre>
-##### *```NOTE```: Volume runtimemysqldockervolume (/var/lib/docker/volumes/) can only be deleted if we stop and delete the MySQL container.*
-##### *STEP#11: Start MySQL Container:*
+###### *```NOTE```: Volume runtimemysqldockervolume (/var/lib/docker/volumes/) can only be deleted if we stop and delete the MySQL container.*
+###### *STEP#11: Start MySQL Container:*
 <pre>
 bash-3.2$ <b>docker start 438f7e343b4b </b> 
 Error response from daemon: No such container: 438f7e343b4b
@@ -116,12 +116,12 @@ Error: failed to start containers: 438f7e343b4b
 bash-3.2$ 
 </pre>
 ##### *```NOTE```: Once the container is deleted, it cant be re-started.*
-##### *STEP#12: Re-Launch MySQL Container:
+###### *STEP#12: Re-Launch MySQL Container:
 <pre>
 bash-3.2$ <b>docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql </b> 
 8388e3db25a2ffa577b0b36bf3b32422829112f34a37955f6b9241a253a32af3
 </pre>
-##### *STEP#13: Check tinside the MySQL Container:*:
+###### *STEP#13: Check tinside the MySQL Container:*:
 <pre>
 bash-3.2$ <b>docker exec -it testmysqldocker mysql -uroot -proot </b> 
 mysql: [Warning] Using a password on the command line interface can be insecure.
