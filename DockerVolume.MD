@@ -107,7 +107,7 @@ runtimemysqldockervolume
 bash-3.2$ <b>docker volume ls </b> 
 DRIVER              VOLUME NAME
 </pre>
-###### *```NOTE```: Volume runtimemysqldockervolume (/var/lib/docker/volumes/) can only be deleted if we stop and delete the MySQL container.*
+##### *```NOTE```: Volume runtimemysqldockervolume (/var/lib/docker/volumes/) can only be deleted if we stop and delete the MySQL container.*
 ###### *STEP#11: Start MySQL Container:*
 <pre>
 bash-3.2$ <b>docker start 438f7e343b4b </b> 
