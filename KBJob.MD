@@ -1,6 +1,6 @@
 ### Kubernetes Job
 
-###### BATCH JOBS
+#### BATCH JOBS
 
 ##### STEP#1: Create a Java Class:
 <pre>
@@ -220,7 +220,7 @@ bash-3.2$
 
 <hr>
 
-###### CRON JOBS
+#### CRON JOBS
 
 ##### STEP#1: Create a Job:
 ```
