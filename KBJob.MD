@@ -267,8 +267,8 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   48d
 
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     0        <none>          5s
-<b>[ABOVE: THE CRONJOB GETS CREATED]</b>
 </pre>
+##### *```NOTE```:CronJob gets scheduled for every 1 minute.*
 ###### *STEP#3: Get the status of Job & Pods:*
 <pre>
 bash-3.2$ <b>kubectl get all</b>
@@ -283,7 +283,8 @@ job.batch/kuberneteshelloworldjob-1573148100   0/1           6s         6s
 
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     1        11s             25s
-###### *```NOTE```:CronJob initiates a Job which instantiate a Pod.*
+</pre>
+##### *```NOTE```:CronJob initiates a Job which instantiate a Pod.*
 ###### *STEP#4: Get details of Job:*
 </pre>
 bash-3.2$ <br>kubectl describe job kuberneteshelloworldjob-1573148100</br>
