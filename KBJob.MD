@@ -117,7 +117,8 @@ bash-3.2$
 
 
 ##### STEP#5: Create a ```Parallel``` Job: 
-vi kubejob.yml
+```
+vi kubejobpar.yml
 ```
 ```
 apiVersion: batch/v1
@@ -136,10 +137,17 @@ spec:
   backoffLimit: 4
 ```
 ```
-kubectl apply -f kubejob.yml
+kubectl apply -f kubejobpar.yml
 ```
 
+##### STEP#6: Check & Analyse:
 
+<pre>
+
+
+
+
+</pre>
 
 
 
