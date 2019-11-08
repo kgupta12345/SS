@@ -22,7 +22,7 @@ bash-3.2$ <b>docker volume inspect mydockervolume</b>
         "CreatedAt": "2019-11-04T12:07:53Z",
         "Driver": "local",
         "Labels": {},
-        "Mountpoint": "/var/lib/docker/volumes/mydockervolume/_data",
+        "Mountpoint": "<b>/var/lib/docker/volumes/mydockervolume/_data</b>",
         "Name": "mydockervolume",
         "Options": {},
         "Scope": "local"
@@ -30,9 +30,6 @@ bash-3.2$ <b>docker volume inspect mydockervolume</b>
 ]
 bash-3.2$ 
 </pre>
-
-##### NOTE: Sharing Docker Volumes refers to sharing this location: /var/lib/docker/volumes/mydockervolume/_data  
-
 
 ##### STEP#4: Attach a Docker Volume with Container (MySQL):
 <pre>
