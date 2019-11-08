@@ -47,7 +47,7 @@ spec:
 kubectl apply -f kubejob.yml
 ```
 
-| EXPERIMENT: To Understand Jobs & Pods |
+| EXPERIMENT: To Understand Job-Pod Relationship |
 | --- |
 
 ###### *STEP#1: Get the status of Job & Pods:*
@@ -182,7 +182,7 @@ spec:
 kubectl apply -f kubejobpar.yml
 ```
 
-| EXPERIMENT: To Understand Jobs & Pods |
+| EXPERIMENT: To Understand Job-Pod Relationship |
 | --- |
 
 ###### *STEP#1: Get the status of Pods:*
@@ -254,7 +254,7 @@ spec:
 kubectl apply -f kubecronjob.yml
 ```
 
-| EXPERIMENT: To Understand Jobs & Pods |
+| EXPERIMENT: To Understand Job-Pod Relationship |
 | --- |
 
 ###### *STEP#1: Get the status of Job & Pods:*
