@@ -25,7 +25,7 @@ WORKDIR /var/www/java
 RUN javac KubernetesHelloWorldJob.java  
 CMD ["java", "KubernetesHelloWorldJob"]
 </pre>
-##### STEP#3: Create a Sequential Job
+##### STEP#3: Create a ```Sequential``` Job:
 ```
 vi kubejob.yml
 ```
@@ -50,7 +50,7 @@ kubectl apply -f kubejob.yml
 
 ##### STEP#4: Check & Analyse:
 <pre>
-bash-3.2$ <b>kubectl get jobs<b>
+bash-3.2$ <b>kubectl get jobs</b>
 NAME                      COMPLETIONS   DURATION   AGE
 kuberneteshelloworldjob   2/2           64s        8m13s
 
@@ -97,7 +97,7 @@ bash-3.2$
  
 </pre>
 
-###### The Job initiates Pod. We can understand this from ```kubectl describe job kuberneteshelloworldjob```
+###### The Job initiates Pod. We can understand this from above *executed* command: ```kubectl describe job kuberneteshelloworldjob```
 
 
 <pre>
@@ -113,10 +113,10 @@ bash-3.2$
 
 </pre>
 
-##### NOTE: After the jobs is completed the Job status becomes 2/2- Out of 2 both 2 are completed. And the Pod status of each becomes 0/1. As their task is completed.
+##### NOTE: After the jobs are completed the Job status becomes 2/2 - Out of 2 both 2 are completed. And the Pod status of each becomes 0/1. As their desired tasks are completed.
 
 
-##### STEP#5: Create a Job 
+##### STEP#5: Create a ```Parallel``` Job: 
 vi kubejob.yml
 ```
 ```
@@ -125,7 +125,8 @@ kind: Job
 metadata:
   name: kuberneteshelloworldjob
 spec:
-  completions: 2
+  completions: 10
+  parallelism: 2
   template:
     spec:
       containers:
@@ -137,6 +138,35 @@ spec:
 ```
 kubectl apply -f kubejob.yml
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <hr>
 
