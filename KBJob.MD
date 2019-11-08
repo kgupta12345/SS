@@ -25,7 +25,7 @@ WORKDIR /var/www/java
 RUN javac KubernetesHelloWorldJob.java  
 CMD ["java", "KubernetesHelloWorldJob"]
 </pre>
-##### STEP#3: Create a Job:
+##### STEP#3: Create a Sequential Job
 ```
 vi kubejob.yml
 ```
@@ -35,6 +35,7 @@ kind: Job
 metadata:
   name: kuberneteshelloworldjob
 spec:
+  completions: 2
   template:
     spec:
       containers:
@@ -49,26 +50,35 @@ kubectl apply -f kubejob.yml
 
 ##### STEP#4: Check & Analyse:
 <pre>
-bash-3.2$ <b>kubectl get job</b>
+bash-3.2$ <b>kubectl get jobs<b>
 NAME                      COMPLETIONS   DURATION   AGE
-kuberneteshelloworldjob   1/1           31s        34s
-loadtest                  1/1           45s        38d
+kuberneteshelloworldjob   2/2           64s        8m13s
+
+<hr>
+
+bash-3.2$ <b>kubectl get pods</b>
+NAME                            READY   STATUS      RESTARTS   AGE
+kuberneteshelloworldjob-l6g7k   0/1     Completed   0          8m18s
+kuberneteshelloworldjob-tpb44   0/1     Completed   0          7m47s
+
+<hr>
+
 bash-3.2$ <b>kubectl describe job kuberneteshelloworldjob</b>
 Name:           kuberneteshelloworldjob
 Namespace:      default
-Selector:       controller-uid=f2032f31-0121-11ea-b943-025000000001
-Labels:         controller-uid=f2032f31-0121-11ea-b943-025000000001
+Selector:       controller-uid=fb842ae4-01e4-11ea-8fa3-025000000001
+Labels:         controller-uid=fb842ae4-01e4-11ea-8fa3-025000000001
                 job-name=kuberneteshelloworldjob
 Annotations:    kubectl.kubernetes.io/last-applied-configuration:
                   {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"name":"kuberneteshelloworldjob","namespace":"default"},"spec":{"backof...
 Parallelism:    1
-Completions:    1
-Start Time:     Thu, 07 Nov 2019 <b>11:16:29</b> +0530
-Completed At:   Thu, 07 Nov 2019 <b>11:17:00</b> +0530
-Duration:       31s
-Pods Statuses:  0 Running / 1 Succeeded / 0 Failed
+Completions:    2
+Start Time:     Fri, 08 Nov 2019 10:32:37 +0530
+Completed At:   Fri, 08 Nov 2019 10:33:41 +0530
+Duration:       64s
+Pods Statuses:  0 Running / 2 Succeeded / 0 Failed
 Pod Template:
-  Labels:  controller-uid=f2032f31-0121-11ea-b943-025000000001
+  Labels:  controller-uid=fb842ae4-01e4-11ea-8fa3-025000000001
            job-name=kuberneteshelloworldjob
   Containers:
    kuberneteshelloworldjob:
@@ -81,22 +91,52 @@ Pod Template:
 Events:
   Type    Reason            Age   From            Message
   ----    ------            ----  ----            -------
-  Normal  SuccessfulCreate  37s   job-controller  Created pod: kuberneteshelloworldjob-8dvvw
+  Normal  SuccessfulCreate  10m   job-controller  Created pod: kuberneteshelloworldjob-l6g7k
+  Normal  SuccessfulCreate  10m   job-controller  Created pod: kuberneteshelloworldjob-tpb44
 bash-3.2$ 
+ 
 </pre>
 
-###### The Job initiates Pod. Therefore on listing pods using ```kubectl get pods``` it shows ```kuberneteshelloworldjob-8dvvw ``` which can be verified using (above) ```kubectl describe job kuberneteshelloworldjob```
+###### The Job initiates Pod. We can understand this from ```kubectl describe job kuberneteshelloworldjob```
+
+
 <pre>
-bash-3.2$ <b>kubectl get pods</b>
-NAME                            READY   STATUS      RESTARTS   AGE
-kuberneteshelloworldjob-8dvvw   0/1     Completed   0          12m
-bash-3.2$ <b>kubectl logs kuberneteshelloworldjob-8dvvw</b>
+bash-3.2$ <b>kubectl log kuberneteshelloworldjob-l6g7k</b>
+log is DEPRECATED and will be removed in a future version. Use logs instead.
+HELLO STEP#1
+HELLO STEP#2
+bash-3.2$ <b>kubectl log kuberneteshelloworldjob-tpb44</b>
+log is DEPRECATED and will be removed in a future version. Use logs instead.
 HELLO STEP#1
 HELLO STEP#2
 bash-3.2$ 
 
 </pre>
-##### NOTE: After the job is completed the Job status becomes 1/1 but the pod status becomes 0/1.
+
+##### NOTE: After the jobs is completed the Job status becomes 2/2- Out of 2 both 2 are completed. And the Pod status of each becomes 0/1. As their task is completed.
+
+
+##### STEP#5: Create a Job 
+vi kubejob.yml
+```
+```
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kuberneteshelloworldjob
+spec:
+  completions: 2
+  template:
+    spec:
+      containers:
+      - name: kuberneteshelloworldjob
+        image: rahulvaish/kuberneteshelloworldjob
+      restartPolicy: Never
+  backoffLimit: 4
+```
+```
+kubectl apply -f kubejob.yml
+```
 
 <hr>
 
