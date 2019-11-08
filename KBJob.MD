@@ -284,7 +284,7 @@ job.batch/kuberneteshelloworldjob-1573148100   0/1           6s         6s
 NAME                                    SCHEDULE      SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 cronjob.batch/kuberneteshelloworldjob   */1 * * * *   False     1        11s             25s
 </pre>
-##### *```NOTE```:CronJob initiates a Job which instantiate a Pod.*
+##### *```NOTE```:CronJob initiates a Job which instantiates a Pod.*
 ###### *STEP#4: Get details of Job:*
 <pre>
 bash-3.2$ <b>kubectl describe job kuberneteshelloworldjob-1573148100</b>
