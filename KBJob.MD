@@ -177,31 +177,7 @@ kuberneteshelloworldjob   10/10         2m54s      4m19s
 bash-3.2$ 
 </pre>
 
-##### NOTE: There is 1 Job, which is iterated for 10 times. Eact iteration will instantiate 1 Pod. Introducing ```parallelism of 2``` initiates 2 Pods at a time.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+##### NOTE: There is 1 Job, which is iterated for 10 times. Each iteration will instantiate 1 Pod. Introducing ```parallelism of 2``` initiates 2 Jobs - 2 Pods at a time.
 
 <hr>
 
