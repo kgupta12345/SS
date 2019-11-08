@@ -153,7 +153,7 @@ bash-3.2$
 bash-3.2$ <b>docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL_ROOT_PASSWORD=root -v runtimemysqldockervolume:/var/lib/mysql/  mysql </b> 
 8388e3db25a2ffa577b0b36bf3b32422829112f34a37955f6b9241a253a32af3
 </pre>
-###### *STEP#13: Check tinside the MySQL Container:*
+###### *STEP#13: Check inside the MySQL Container:*
 <pre>
 bash-3.2$ <b>docker exec -it testmysqldocker mysql -uroot -proot </b> 
 mysql: [Warning] Using a password on the command line interface can be insecure.
