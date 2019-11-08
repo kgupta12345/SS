@@ -97,7 +97,8 @@ bash-3.2$
  
 </pre>
 
-###### The Job initiates Pod. We can understand this from above *executed* command: ```kubectl describe job kuberneteshelloworldjob```
+###### There is 1 Job (kuberneteshelloworldjob) which iterates twice. On its first iteration in intitiates Pod (kuberneteshelloworldjob-l6g7k) on its second iteration it initiates Pod (kuberneteshelloworldjob-tpb44). 
+
 
 
 <pre>
@@ -113,7 +114,7 @@ bash-3.2$
 
 </pre>
 
-##### NOTE: After the jobs are completed the Job status becomes 2/2 - Out of 2 both 2 are completed. And the Pod status of each becomes 0/1. As their desired tasks are completed.
+##### NOTE: After both Job iteartions are completed, the status becomes 2/2, which means, out of 2 Job iterations, both are completed. Also, as each iteration initiates 1 Pod, and its desired task is completed, so 0/1 status comes against each Pod.
 
 
 ##### STEP#5: Create a ```Parallel``` Job: 
@@ -143,14 +144,40 @@ kubectl apply -f kubejobpar.yml
 ##### STEP#6: Check & Analyse:
 
 <pre>
+bash-3.2$ <b>kubectl get pods</b>
+NAME                            READY   STATUS              RESTARTS   AGE
+kuberneteshelloworldjob-24wxb   0/1     Completed           0          35s
+kuberneteshelloworldjob-5d2lf   0/1     ContainerCreating   0          6s
+kuberneteshelloworldjob-5q2st   0/1     Completed           0          2m20s
+kuberneteshelloworldjob-ckv5p   0/1     ContainerCreating   0          0s
+kuberneteshelloworldjob-fmlfc   0/1     Completed           0          74s
+kuberneteshelloworldjob-kgjhp   0/1     Completed           0          69s
+kuberneteshelloworldjob-n5cg2   0/1     Completed           0          2m20s
+kuberneteshelloworldjob-ngw7v   0/1     Completed           0          107s
+kuberneteshelloworldjob-sjnx7   0/1     Completed           0          40s
+kuberneteshelloworldjob-xbjs8   0/1     Completed           0          102s
 
+<hr>
 
-
-
+bash-3.2$ <b>kubectl get pods</b>
+NAME                            READY   STATUS      RESTARTS   AGE
+kuberneteshelloworldjob-24wxb   0/1     Completed   0          2m24s
+kuberneteshelloworldjob-5d2lf   0/1     Completed   0          115s
+kuberneteshelloworldjob-5q2st   0/1     Completed   0          4m9s
+kuberneteshelloworldjob-ckv5p   0/1     Completed   0          109s
+kuberneteshelloworldjob-fmlfc   0/1     Completed   0          3m3s
+kuberneteshelloworldjob-kgjhp   0/1     Completed   0          2m58s
+kuberneteshelloworldjob-n5cg2   0/1     Completed   0          4m9s
+kuberneteshelloworldjob-ngw7v   0/1     Completed   0          3m36s
+kuberneteshelloworldjob-sjnx7   0/1     Completed   0          2m29s
+kuberneteshelloworldjob-xbjs8   0/1     Completed   0          3m31s
+bash-3.2$ kubectl get jobs
+NAME                      COMPLETIONS   DURATION   AGE
+kuberneteshelloworldjob   10/10         2m54s      4m19s
+bash-3.2$ 
 </pre>
 
-
-
+##### NOTE: There is 1 Job, which is iterated for 10 times. Eact iteration will instantiate 1 Pod. Introducing ```parallelism of 2``` initiates 2 Pods at a time.
 
 
 
