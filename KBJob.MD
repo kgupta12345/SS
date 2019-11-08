@@ -194,9 +194,9 @@ kuberneteshelloworldjob-n5cg2   0/1     Completed           0          2m20s
 kuberneteshelloworldjob-ngw7v   0/1     Completed           0          107s
 kuberneteshelloworldjob-sjnx7   0/1     Completed           0          40s
 kuberneteshelloworldjob-xbjs8   0/1     Completed           0          102s
+</pre>
 
-<hr>
-
+<pre>
 bash-3.2$ <b>kubectl get pods</b>
 NAME                            READY   STATUS      RESTARTS   AGE
 kuberneteshelloworldjob-24wxb   0/1     Completed   0          2m24s
@@ -215,13 +215,13 @@ kuberneteshelloworldjob   10/10         2m54s      4m19s
 bash-3.2$ 
 </pre>
 
-##### NOTE: There is 1 Job, which is iterated for 10 times. Each iteration will instantiate 1 Pod. Introducing ```parallelism of 2``` initiates 2 Jobs - 2 Pods at a time.
+##### ```NOTE```: There is 1 Job, which is iterated for 10 times. Each iteration will instantiate 1 Pod. Introducing  parallelism of 2 initiates 2 Jobs - 2 Pods at a time.
 
 <hr>
 
 ###### CRON JOBS
 
-##### STEP#3: Create a Job:
+##### STEP#1: Create a Job:
 ```
 vi kubecronjob.yml
 ```
