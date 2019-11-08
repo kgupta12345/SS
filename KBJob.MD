@@ -60,7 +60,7 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   49d
 NAME                                COMPLETIONS   DURATION   AGE
 job.batch/kuberneteshelloworldjob   0/2           4s         4s
 </pre>
-###### There is 1 Job (kuberneteshelloworldjob) which iterates twice. On its first iteration in intitiates Pod (kuberneteshelloworldjob-z7p9v)
+##### NOTE: There is 1 Job (kuberneteshelloworldjob) which iterates twice. On its first iteration in intitiates Pod (kuberneteshelloworldjob-z7p9v)
 
 <pre>
 bash-3.2$ <b>kubectl get all</b>
@@ -74,7 +74,7 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   49d
 NAME                                COMPLETIONS   DURATION   AGE
 job.batch/kuberneteshelloworldjob   1/2           38s        38s
 </pre>
-##### The first iteration of Job (```kuberneteshelloworldjob```) is completed and it's instantiated pod(```kuberneteshelloworldjob-z7p9v```) is also completed. The second iteration has started and it has instantiated its Pod (```kuberneteshelloworldjob-r9rk4```)
+##### NOTE: The first iteration of Job (```kuberneteshelloworldjob```) is completed and it's instantiated pod(```kuberneteshelloworldjob-z7p9v```) is also completed. The second iteration has started and it has instantiated its Pod (```kuberneteshelloworldjob-r9rk4```)
 
 <pre>
 bash-3.2$ <b>kubectl get all</b>
@@ -88,7 +88,7 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   49d
 NAME                                COMPLETIONS   DURATION   AGE
 job.batch/kuberneteshelloworldjob   1/2           66s        66s
 </pre>
-##### The second iteration is running started and also it's instantiated Pod (```kuberneteshelloworldjob-r9rk4```)
+##### NOTE: The second iteration is running started and also it's instantiated Pod (```kuberneteshelloworldjob-r9rk4```)
 
 <pre>
 bash-3.2$ <b>kubectl get all</b>
@@ -103,7 +103,7 @@ NAME                                COMPLETIONS   DURATION   AGE
 job.batch/kuberneteshelloworldjob   2/2           67s        88s
 bash-3.2$ 
 </pre>
-##### The second iteration is completed and also it's instantiated Pod (```kuberneteshelloworldjob-r9rk4```) is completed.
+##### NOTE: The second iteration is completed and also it's instantiated Pod (```kuberneteshelloworldjob-r9rk4```) is completed.
 
 <pre>
 bash-3.2$ <b>kubectl describe job kuberneteshelloworldjob</b>
@@ -139,7 +139,7 @@ Events:
 bash-3.2$ 
 </pre>
 
-##### On describing Job (kuberneteshelloworldjob) which iterates twice, describes 2 Succeeded + the pods each iteration created -  ```kuberneteshelloworldjob-z7p9v``` and ```kuberneteshelloworldjob-r9rk4``` .Also if we check logs of each pod, we see the application output:
+##### NOTE: On describing Job (```kuberneteshelloworldjob```) which iterates twice, describes 2 Succeeded + the pods each iteration created -  ```kuberneteshelloworldjob-z7p9v``` and ```kuberneteshelloworldjob-r9rk4``` .Also if we check logs of each pod, we see the application output:
 <pre>
 bash-3.2$ <b>kubectl log kuberneteshelloworldjob-l6g7k</b>
 log is DEPRECATED and will be removed in a future version. Use logs instead.
