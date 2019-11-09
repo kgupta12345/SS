@@ -17,6 +17,6 @@ kubectl config current-context
 ```
 kubectl config use-context kubesys
 ```
-![image](https://user-images.githubusercontent.com/45539698/68532239-e4d25000-0340-11ea-80c9-aea98be7b4a0.png)
+![image](https://user-images.githubusercontent.com/45539698/68532303-adb06e80-0341-11ea-9307-e34244f14143.png)
 
 ##### STEP#3:
