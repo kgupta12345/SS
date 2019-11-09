@@ -9,6 +9,12 @@ kubectl config set-context kubesys --namespace=kube-system --user=kubernetes-adm
 
 ##### STEP#2: List Contexts | Determine Current Context | Switch Context:
 ```
+kubectl config get-contexts
+```
+```
+kubectl config current-context
+```
+```
 kubectl config use-context kubesys
 ```
 ![image](https://user-images.githubusercontent.com/45539698/68532239-e4d25000-0340-11ea-80c9-aea98be7b4a0.png)
