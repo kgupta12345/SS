@@ -40,7 +40,7 @@ docker volume rm mydockervolume
 </pre>
  - ###### Delete Docker Volume when attached with container(Here, MySQL):
     <pre>
-    docker stop <container_id>
+    docker stop <<container_id>>
     </pre>
     <pre>
     docker container rm <container_id> 
