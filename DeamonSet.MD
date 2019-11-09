@@ -58,11 +58,12 @@ kubectl apply -f daemonset.yml
           - image: rahulvaish/springbootdocker
             name: springbootdockerdaemonset
           nodeSelector:
-            gpupresent: true
-        ```
-        ```
-        kubectl apply -f daemonset.yml
-        ```
+            gpupresent: "true"
+      ```
+      ```
+      kubectl apply -f daemonset.yml
+      ```
  - ###### Obseve Pod Scheduling:
- 
+    ![image](https://user-images.githubusercontent.com/45539698/68527597-a1f78480-030e-11ea-853e-04ff1e988f70.png)
+
 
