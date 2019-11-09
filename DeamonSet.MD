@@ -27,9 +27,8 @@ spec:
 kubectl apply -f daemonset.yml
 ```
 
-##### STEP#2: Activate Node#2:
+##### STEP#2: Activate Node#2-Pod scheduling happens successfully:
 ![image](https://user-images.githubusercontent.com/45539698/68525669-e9274a80-02f9-11ea-9a51-b34ab0318cb7.png)
-#### ```NOTE```: As currently Node#2 is Active, therefore, Pod gets scheduled on it.
-##### STEP#3: Activate Node#1:
+##### STEP#3: Activate Node#1-Pod scheduling happens successfully:
 ![image](https://user-images.githubusercontent.com/45539698/68525844-e3326900-02fb-11ea-9aaa-a08b46bf0035.png)
-#### ```NOTE```: A new Pod gets scheduled on it.
+
