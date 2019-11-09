@@ -39,14 +39,14 @@ docker run --name testmysqldocker -d -p 3306:3306 -e MYSQL_DATABASE=dev -e MYSQL
 docker volume rm mydockervolume
 </pre>
  - ###### Delete Docker Volume when attached with container(Here, MySQL):
-    <pre>
-    docker stop <<container_id>>
-    </pre>
-    <pre>
+    ```
+    docker stop <container_id>
+    ```
+    ```
     docker container rm <container_id> 
-    </pre>
-    <pre>
+    ```
+    ```
     docker volume rm runtimemysqldockervolume
-    </pre>
+    ```
 
 <hr>
