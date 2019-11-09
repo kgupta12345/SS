@@ -33,7 +33,7 @@ kubectl apply -f daemonset.yml
 ![image](https://user-images.githubusercontent.com/45539698/68526045-b0897000-02fd-11ea-98dc-1e5a23244f87.png)
 ##### STEP#4: Kill a Pod &rightarrow; Re-creation of new Pod happens on the same Node:
 ![image](https://user-images.githubusercontent.com/45539698/68526480-5f2faf80-0302-11ea-91c4-8fef86ccf0a1.png)
-##### STEP#5: Make DeamonSet run on selective Node:
+##### STEP#5: DeamonSet running on selective Node:
  - ###### [1] Label the Node with *gpupresent=true*:
     ![image](https://user-images.githubusercontent.com/45539698/68527410-930fd280-030c-11ea-9273-b7c044ba88fb.png)
  - ###### [2] Re-deploy DaemonSet by introducing *nodeselector* in the configuration:
