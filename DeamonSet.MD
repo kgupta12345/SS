@@ -31,6 +31,7 @@ kubectl apply -f daemonset.yml
 ![image](https://user-images.githubusercontent.com/45539698/68526137-b5025880-02fe-11ea-8c61-0a38053b222e.png)
 ##### STEP#3: Activate Node#1-Pod scheduling happens successfully:
 ![image](https://user-images.githubusercontent.com/45539698/68526045-b0897000-02fd-11ea-98dc-1e5a23244f87.png)
-##### STEP#4: Kill a Pod-Re-creation happens on the same Node:
+##### STEP#4: Kill a Pod-Re-creation happens on the same node:
+![image](https://user-images.githubusercontent.com/45539698/68526450-1d066e00-0302-11ea-9aaa-6904a570d10f.png)
 
 
