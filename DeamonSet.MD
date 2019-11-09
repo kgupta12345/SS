@@ -34,9 +34,9 @@ kubectl apply -f daemonset.yml
 ##### STEP#4: Kill a Pod &rightarrow; Re-creation of new Pod happens on the same Node:
 ![image](https://user-images.githubusercontent.com/45539698/68526480-5f2faf80-0302-11ea-91c4-8fef86ccf0a1.png)
 ##### STEP#5: DeamonSet running on selective Node:
- - ###### [1] Label the Node with *gpupresent=true*:
+ - ###### *STEP#1: Label the Node with *gpupresent=true*:*
     ![image](https://user-images.githubusercontent.com/45539698/68527410-930fd280-030c-11ea-9273-b7c044ba88fb.png)
- - ###### [2] Re-deploy DaemonSet by introducing *nodeselector* in the configuration:
+ - ###### *STEP#2: Re-deploy DaemonSet by introducing *nodeselector* in the configuration:*
     ```
     vi daemonset.yml
     ```
@@ -63,7 +63,7 @@ kubectl apply -f daemonset.yml
       ```
       kubectl apply -f daemonset.yml
       ```
- - ###### [3] Obseve Pod Scheduling happening only on Node#2 - 
+ - ###### *STEP#3: Obseve Pod Scheduling happening only on Node#2:*
     ![image](https://user-images.githubusercontent.com/45539698/68527597-a1f78480-030e-11ea-853e-04ff1e988f70.png)
 
 
