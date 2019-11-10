@@ -81,7 +81,7 @@ metadata:
       - *From mycontext -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
       - *From mycontext -deploy on kube-system ------> SUCCESS*
 
-###### *STEP#4: CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES*
+###### *STEP#4: ```CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES```*
 
 ###### *STEP#5: Create a resource(Deployment) from mycontext1 :*
   - ###### *STEP#A: Switch to mycontext1 | Check current Context:*
@@ -132,11 +132,12 @@ metadata:
       - *From mycontext1 -deploy on vaishrahulnamespace1 (It's own default NS) ------> FAILURE*
       - *From mycontext1 -deploy on kube-system ------> SUCCESS*
 
-###### *STEP#6: CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES*      
+###### *STEP#6: ```CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES```*  
+
 ###### *STEP#7: Create a resource(Deployment) from mycontext2 :*
-- ###### *STEP#A: Switch to mycontext1 | Check current Context:*
+  - ###### *STEP#A: Switch to mycontext2 | Check current Context:*
     ```
-    kubectl config use-context mycontext1
+    kubectl config use-context mycontext2
     ```
     ```
     kubectl config current-context
@@ -176,14 +177,11 @@ metadata:
       kubectl apply -f deploy.yml
       ```
       ##### *OBSERVATIONS:*
-      - *From mycontext1 -deploy on rahulnamespace ------> SUCCESS*
-      - *From mycontext1 -deploy on vaishnamespace ------> SUCCESS*
-      - *From mycontext1 -deploy on vaishrahulnamespace (Tagged as default NS) ------> FAILURE*
-      - *From mycontext1 -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
-      - *From mycontext1 -deploy on kube-system ------> SUCCESS*
-
-
-
+      - *From mycontext2 -deploy on rahulnamespace ------> SUCCESS*
+      - *From mycontext2 -deploy on vaishnamespace ------> SUCCESS*
+      - *From mycontext2 -deploy on vaishrahulnamespace (Tagged as default NS) ------> FAILURE*
+      - *From mycontext2 -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
+      - *From mycontext2 -deploy on kube-system (It's mycontext2's default NS. But, also K8 System's NS) ------> SUCCESS*
 
 <hr>
 
