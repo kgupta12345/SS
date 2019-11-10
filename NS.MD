@@ -34,8 +34,8 @@ kubectl config set-context mycontext1 --namespace=vaishrahulnamespace1 --user=ku
 ```
 kubectl config set-context mycontext2 --namespace=kube-system --user=kubernetes-admin --cluster=kubernetes
 ```
-##### *```NOTE```: We have created 3 conexts.2/3 have their own N/Ss. 1/3 has its default NS as kube-system (Kubernetes System's Namespace):*
-![image](https://user-images.githubusercontent.com/45539698/68538903-a28d2b00-03a1-11ea-8a64-637781d37634.png)
+![image](https://user-images.githubusercontent.com/45539698/68539953-f5221380-03b0-11ea-9c6d-71c90c505b43.png)
+##### *```NOTE```: We have created 3 Contexts. 2/3 Contexts have their own default N/Ss. 1/3 has its default NS as kube-system (Kubernetes System's Namespace):*
 ###### *STEP#2: Create Namespaces:*
 ```
 apiVersion: v1
