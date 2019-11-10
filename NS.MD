@@ -83,9 +83,9 @@ metadata:
   - *From mycontext -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
   - *From mycontext -deploy on kube-system ------> SUCCESS*
 
-###### *STEP#5: Clear all deployments from Namespaces*
+###### *STEP#4: CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES*
 
-###### *STEP#4: Create a resource(Deployment) from mycontext1 :*
+###### *STEP#5: Create a resource(Deployment) from mycontext1 :*
   - ###### *STEP#A: Switch to mycontext1 | Check current Context:*
     ```
     kubectl config use-context mycontext1
@@ -135,6 +135,10 @@ metadata:
   - *From mycontext1 -deploy on vaishrahulnamespace (Tagged as default NS) ------> FAILURE*
   - *From mycontext1 -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
   - *From mycontext1 -deploy on kube-system ------> SUCCESS*
+
+###### *STEP#6: CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES*
+
+
 
 
 
