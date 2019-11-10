@@ -57,11 +57,11 @@ spec:
         ports:
         - containerPort: 8080
 ```
-##### *```OBSERVATION```*:
-```
-Switch to mycontext -deploy------> rahulnamespace 
-Switch to mycontext -deploy------> vaishnamespace 
-Switch to mycontext -can't deploy on------> vaishrahulnamespace
-Switch to mycontext -can't deploy on------> vaishrahulnamespace1
-Switch to mycontext -deploy------> kube-system
-```
+##### OBSERVATIONS:
+  - Switch to mycontext -deploy------> rahulnamespace 
+  - Switch to mycontext -deploy------> vaishnamespace 
+  - Switch to mycontext -can't deploy on------> vaishrahulnamespace
+  - Switch to mycontext -can't deploy on------> vaishrahulnamespace1
+  - Switch to mycontext -deploy------> kube-system
+
+
