@@ -30,9 +30,8 @@ kind: Namespace
 metadata:
   name: vaishnamespace
 ```
-###### *STEP#3: Listing Namespaces:*
+###### *STEP#3: Listing Namespaces &rightarrow; We can't see default Namespaces which were created as part of Context.*
 ![image](https://user-images.githubusercontent.com/45539698/68539048-b5a0fa80-03a3-11ea-8951-ddf725ef9e70.png)
-##### *```NOTE```: We can't see default Namespaces which were created as part of Context.*
 ###### *STEP#3: Make Deployment:* 
 ```
 apiVersion: extensions/v1beta1
@@ -57,7 +56,7 @@ spec:
         ports:
         - containerPort: 8080
 ```
-##### *```OBSERVATION```:
+##### *```OBSERVATION```*:
 ```
 Switch to mycontext -deploy------> rahulnamespace 
 Switch to mycontext -deploy------> vaishnamespace 
