@@ -45,22 +45,18 @@ metadata:
 
 ```
 ```
-vi n2.yml
-```
-```
 apiVersion: v1
 kind: Namespace
 metadata:
   name: vaishnamespace
-
 ```
 ###### *STEP#3: Listing Namespaces:*
 ![image](https://user-images.githubusercontent.com/45539698/68539048-b5a0fa80-03a3-11ea-8951-ddf725ef9e70.png)
+##### *```NOTE```: We have created 3 Contexts.
+
+
 
 ###### *STEP#2: Make Deployment:*
-```
-vi deployment.yml
-```
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -83,7 +79,4 @@ spec:
         image: rahulvaish/springbootdocker
         ports:
         - containerPort: 8080
-```
-```
-kubectl apply -f deployment.yml
 ```
