@@ -63,7 +63,7 @@ kubectl apply -f daemonset.yml
       ```
       kubectl apply -f daemonset.yml
       ```
- - ###### *STEP#C: Obseve Pod Scheduling happening only on Node#2:*
+ - ###### *STEP#C: Observe Pod Scheduling happening only on Node#2:*
     ![image](https://user-images.githubusercontent.com/45539698/68527597-a1f78480-030e-11ea-853e-04ff1e988f70.png)
 
 
