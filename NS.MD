@@ -73,13 +73,11 @@ metadata:
       ```
       ```
       kubectl apply -f deploy.yml
-      ```
-  
- 
+      ``` 
       ##### *OBSERVATIONS:*
       - *From mycontext -deploy on rahulnamespace ------> SUCCESS*
       - *From mycontext -deploy on vaishnamespace ------> SUCCESS*
-      - *From mycontext -deploy on vaishrahulnamespace (Tagged as default NS) ------> FAILURE*
+      - *From mycontext -deploy on vaishrahulnamespace (It's own default NS) ------> FAILURE*
       - *From mycontext -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
       - *From mycontext -deploy on kube-system ------> SUCCESS*
 
@@ -127,8 +125,56 @@ metadata:
       ```
       kubectl apply -f deploy.yml
       ```
-  
- 
+      ##### *OBSERVATIONS:*
+      - *From mycontext1 -deploy on rahulnamespace ------> SUCCESS*
+      - *From mycontext1 -deploy on vaishnamespace ------> SUCCESS*
+      - *From mycontext1 -deploy on vaishrahulnamespace (Tagged as default NS) ------> FAILURE*
+      - *From mycontext1 -deploy on vaishrahulnamespace1 (It's own default NS) ------> FAILURE*
+      - *From mycontext1 -deploy on kube-system ------> SUCCESS*
+
+###### *STEP#6: CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES*      
+###### *STEP#7: Create a resource(Deployment) from mycontext2 :*
+- ###### *STEP#A: Switch to mycontext1 | Check current Context:*
+    ```
+    kubectl config use-context mycontext1
+    ```
+    ```
+    kubectl config current-context
+    ```
+  - ###### *STEP#B: Choose a Namespace:*
+    ```
+    kubectl config set-context $(kubectl config current-context) --namespace=rahulnamespace
+    ```
+  - ###### *STEP#C: Create a Deployment:*
+    ```
+    vi deploy.yml
+    ```
+    ```
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+      name: appdeploymentfromyml
+      labels:
+        app: appdeploymentfromyml
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: appdeploymentfromyml
+      template:
+        metadata:
+          labels:
+            app: appdeploymentfromyml
+        spec:
+          containers:
+          - name: appdeploymentfromyml
+            image: rahulvaish/springbootdocker
+            ports:
+            - containerPort: 8080
+      ```
+      ```
+      kubectl apply -f deploy.yml
+      ```
       ##### *OBSERVATIONS:*
       - *From mycontext1 -deploy on rahulnamespace ------> SUCCESS*
       - *From mycontext1 -deploy on vaishnamespace ------> SUCCESS*
@@ -136,9 +182,9 @@ metadata:
       - *From mycontext1 -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
       - *From mycontext1 -deploy on kube-system ------> SUCCESS*
 
-###### *STEP#6: CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES*
 
 
 
+<hr>
 
 
