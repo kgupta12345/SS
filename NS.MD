@@ -76,12 +76,12 @@ metadata:
       ```
   
  
-##### *OBSERVATIONS:*
-  - *From mycontext -deploy on rahulnamespace ------> SUCCESS*
-  - *From mycontext -deploy on vaishnamespace ------> SUCCESS*
-  - *From mycontext -deploy on vaishrahulnamespace (Tagged as default NS) ------> FAILURE*
-  - *From mycontext -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
-  - *From mycontext -deploy on kube-system ------> SUCCESS*
+      ##### *OBSERVATIONS:*
+        - *From mycontext -deploy on rahulnamespace ------> SUCCESS*
+        - *From mycontext -deploy on vaishnamespace ------> SUCCESS*
+        - *From mycontext -deploy on vaishrahulnamespace (Tagged as default NS) ------> FAILURE*
+        - *From mycontext -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
+        - *From mycontext -deploy on kube-system ------> SUCCESS*
 
 ###### *STEP#4: CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES*
 
@@ -129,12 +129,12 @@ metadata:
       ```
   
  
-##### *OBSERVATIONS:*
-  - *From mycontext1 -deploy on rahulnamespace ------> SUCCESS*
-  - *From mycontext1 -deploy on vaishnamespace ------> SUCCESS*
-  - *From mycontext1 -deploy on vaishrahulnamespace (Tagged as default NS) ------> FAILURE*
-  - *From mycontext1 -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
-  - *From mycontext1 -deploy on kube-system ------> SUCCESS*
+      ##### *OBSERVATIONS:*
+        - *From mycontext1 -deploy on rahulnamespace ------> SUCCESS*
+        - *From mycontext1 -deploy on vaishnamespace ------> SUCCESS*
+        - *From mycontext1 -deploy on vaishrahulnamespace (Tagged as default NS) ------> FAILURE*
+        - *From mycontext1 -deploy on vaishrahulnamespace1 (Tagged as default NS) ------> FAILURE*
+        - *From mycontext1 -deploy on kube-system ------> SUCCESS*
 
 ###### *STEP#6: CLEAR ALL DEPLOYMENTS FROM ALL NAMESPACES*
 
