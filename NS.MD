@@ -15,7 +15,7 @@ kubectl config set-context mycontext1 --namespace=vaishrahulnamespace1 --user=ku
 kubectl config set-context mycontext2 --namespace=kube-system --user=kubernetes-admin --cluster=kubernetes
 ```
 ![image](https://user-images.githubusercontent.com/45539698/68540420-e4c16700-03b7-11ea-8827-728de9791603.png)
-##### *```NOTE```: We have created 3 Contexts ```mycontext, mycontext1, mycontext2```. Contexts ```mycontext, mycontext1``` have their own default namespaces ```vaishrahulnamespace, vaishrahulnamespace1``` respectively. Context ```mycontext2``` has chose its default namespace as ```kube-system``` which is one of Kubernetes System's Namespace.*
+##### *```NOTE```: We have created 3 contexts ```mycontext, mycontext1, mycontext2```. Contexts ```mycontext, mycontext1``` have their own default Namespaces ```vaishrahulnamespace, vaishrahulnamespace1``` respectively. Context ```mycontext2``` has chose its default Namespace as ```kube-system``` which is one of Kubernetes System's Namespace.*
 ###### *STEP#2: Create Additional Namespaces:*
 ```
 apiVersion: v1
@@ -32,8 +32,59 @@ metadata:
 ```
 ###### *STEP#3: Listing Namespaces:*
 ![image](https://user-images.githubusercontent.com/45539698/68539048-b5a0fa80-03a3-11ea-8951-ddf725ef9e70.png)
-##### *```NOTE```: We can't see default Namespaces which were created as part of Context.*
-###### *STEP#3: Make Deployment:* 
+##### *```NOTE```: We can't see default Namespaces which were created as default for respective Contexts.*
+###### *STEP#3: Create a resource(Deployment) from mycontext :*
+  - ###### *STEP#A: Switch to mycontext | Check current Context:*
+    ```
+    kubectl config use-context mycontext
+    ```
+    ```
+    kubectl config current-context
+    ```
+  - ###### *STEP#B: Choose a Namespace:*
+    ```
+    kubectl config set-context $(kubectl config current-context) --namespace=rahulnamespace
+    ```
+  - ###### *STEP#C: Create a Deployment:*
+    ```
+    vi deploy.yml
+    ```
+    ```
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    metadata:
+      name: appdeploymentfromyml
+      labels:
+        app: appdeploymentfromyml
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: appdeploymentfromyml
+      template:
+        metadata:
+          labels:
+            app: appdeploymentfromyml
+        spec:
+          containers:
+          - name: appdeploymentfromyml
+            image: rahulvaish/springbootdocker
+            ports:
+            - containerPort: 8080
+      ```
+      ```
+      kubectl apply -f deploy.yml
+      ```
+  
+ 
+##### *OBSERVATIONS:*
+  - *From mycontext -deploy on rahulnamespace ------> SUCCESS*
+  - *From mycontext -deploy on vaishnamespace ------> SUCCESS*
+  - *From mycontext -deploy on vaishrahulnamespace ------> FAILURE*
+  - *From mycontext -deploy on vaishrahulnamespace1 ------> FAILURE*
+  - *From mycontext -deploy on kube-system ------> SUCCESS*
+
+###### *STEP#3: Make Deployment from mycontext :* 
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -57,11 +108,72 @@ spec:
         ports:
         - containerPort: 8080
 ```
-##### OBSERVATIONS:
-  - Switch to mycontext -deploy------> rahulnamespace 
-  - Switch to mycontext -deploy------> vaishnamespace 
-  - Switch to mycontext -can't deploy on------> vaishrahulnamespace
-  - Switch to mycontext -can't deploy on------> vaishrahulnamespace1
-  - Switch to mycontext -deploy------> kube-system
+##### *OBSERVATIONS:*
+  - *Switch to mycontext -deploy------> rahulnamespace *
+  - *Switch to mycontext -deploy------> vaishnamespace *
+  - *Switch to mycontext -can't deploy on------> vaishrahulnamespace*
+  - *Switch to mycontext -can't deploy on------> vaishrahulnamespace1*
+  - *Switch to mycontext -deploy------> kube-system*
 
+###### *STEP#3: Make Deployment from mycontext :* 
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: appdeploymentfromyml
+  labels:
+    app: appdeploymentfromyml
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appdeploymentfromyml
+  template:
+    metadata:
+      labels:
+        app: appdeploymentfromyml
+    spec:
+      containers:
+      - name: appdeploymentfromyml
+        image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080
+```
+##### *OBSERVATIONS:*
+  - *Switch to mycontext -deploy------> rahulnamespace *
+  - *Switch to mycontext -deploy------> vaishnamespace *
+  - *Switch to mycontext -can't deploy on------> vaishrahulnamespace*
+  - *Switch to mycontext -can't deploy on------> vaishrahulnamespace1*
+  - *Switch to mycontext -deploy------> kube-system*
+
+###### *STEP#3: Make Deployment from mycontext :* 
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: appdeploymentfromyml
+  labels:
+    app: appdeploymentfromyml
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appdeploymentfromyml
+  template:
+    metadata:
+      labels:
+        app: appdeploymentfromyml
+    spec:
+      containers:
+      - name: appdeploymentfromyml
+        image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080
+```
+##### *OBSERVATIONS:*
+  - *Switch to mycontext -deploy------> rahulnamespace *
+  - *Switch to mycontext -deploy------> vaishnamespace *
+  - *Switch to mycontext -can't deploy on------> vaishrahulnamespace*
+  - *Switch to mycontext -can't deploy on------> vaishrahulnamespace1*
+  - *Switch to mycontext -deploy------> kube-system*
 
