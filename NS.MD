@@ -1,12 +1,12 @@
 ### Contexts & Namespces
-###### [Here]() we saw how a brief introduction to create a namespace and switching. The below guide aims to setup and understand Contexts & Namespces in Kubernetes.
+###### [Here]() we saw how a brief introduction to create a namespace and switching.But, did not mentioned anything about Conexts. C&N are used to make logical seperation/partition within a cluster. The below guide aims to setup and understand Contexts & Namespces in Kubernetes.
 
 ##### STEP#1: Create a Context:
 ```
-kubectl config set-context kubesys --namespace=vaishrahulnamespace --user=kubernetes-admin --cluster=kubernetes
+kubectl config set-context mycontext --namespace=vaishrahulnamespace --user=kubernetes-admin --cluster=kubernetes
 ```
-##### NOTE: Kubernetes default context is ```kubernetes-admin@kubernetes``` and its default namespace is ```default```. We have created a new context ```kubesys``` and its default namespace is ```vaishrahulnamespace```.
-![image](https://user-images.githubusercontent.com/45539698/68532907-0f280b80-0349-11ea-8bd4-090fb57c853a.png)
+##### NOTE: Kubernetes default context is ```kubernetes-admin@kubernetes``` and the default namespace is ```default```. We have created a new context ```mycontext``` and its default namespace is ```vaishrahulnamespace```. Default namespaces are not meant for holding resources(deployments/pods etc) *unless* it is any of Kubernetes System's Namespace. We shall see this in the below Experiment section.
+
 
 ##### STEP#2: List all Contexts | Determine Current Context | Switch Context:
 ```
@@ -16,14 +16,18 @@ kubectl config get-contexts
 kubectl config current-context
 ```
 ```
-kubectl config use-context kubesys
+kubectl config use-context mycontext
 ```
-![image](https://user-images.githubusercontent.com/45539698/68532675-785a4f80-0346-11ea-9852-0a4ff7d87924.png)
+![image](https://user-images.githubusercontent.com/45539698/68538806-4ece1200-03a0-11ea-9d1e-1231aae7733e.png)
 
-
-| ANALYSIS : To Understand Pod-Namespace Relationship |
+| EXPERIMENT : To Understand Pod-Namespace Relationship |
 |---|
-###### *STEP#1: Create Namespaces:*
+###### *STEP#1: Create Context:*
+
+```
+
+```
+
 ```
 vi n1.yml
 ```
