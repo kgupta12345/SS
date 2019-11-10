@@ -1,26 +1,6 @@
 ### Contexts & Namespces
-###### [Here]() we saw how a brief introduction to create a namespace and switching.But, did not mentioned anything about Contexts. C&N are used to make logical seperation/partition within a cluster. The below guide aims to setup and understand Contexts & Namespces in Kubernetes.
+###### [Here](https://github.com/rahulvaish/ReferenceDocuments/blob/master/UnderstandingKubernetes/%5B05%5D%20Commands-ApplicationDeployment%5BNodes%20and%20Pods%5D.MD) we had a brief introduction about creating a namespace and switching. But, we didn't learnt anything about Contexts. C&N are used to make logical seperation/partition within a cluster. The below guide aims to setup and understand Contexts & Namespces in Kubernetes.
 
-##### STEP#1: Create a Context:
-```
-kubectl config set-context mycontext --namespace=vaishrahulnamespace --user=kubernetes-admin --cluster=kubernetes
-```
-
-##### STEP#2: List all Contexts | Determine Current Context | Switch Context:
-```
-kubectl config get-contexts
-```
-```
-kubectl config current-context
-```
-```
-kubectl config use-context mycontext
-```
-![image](https://user-images.githubusercontent.com/45539698/68538806-4ece1200-03a0-11ea-9d1e-1231aae7733e.png)
-
-##### NOTE: Kubernetes default context is ```kubernetes-admin@kubernetes``` and the default namespace is ```default```. We have created a new context ```mycontext``` and its default namespace is ```vaishrahulnamespace```. Default namespaces are not meant for holding resources(deployments/pods etc) *unless* it is Kubernetes System's Namespace (```kube-system```).
-
-<hr>
 
 | EXPERIMENT : To Understand Pod-Context-Namespace Relationships |
 |---|
@@ -35,8 +15,8 @@ kubectl config set-context mycontext1 --namespace=vaishrahulnamespace1 --user=ku
 kubectl config set-context mycontext2 --namespace=kube-system --user=kubernetes-admin --cluster=kubernetes
 ```
 ![image](https://user-images.githubusercontent.com/45539698/68539953-f5221380-03b0-11ea-9c6d-71c90c505b43.png)
-##### *```NOTE```: We have created 3 Contexts. 2/3 Contexts have their own default N/Ss. 1/3 has its default NS as kube-system (Kubernetes System's Namespace):*
-###### *STEP#2: Create Namespaces:*
+##### *```NOTE```: We have created 3 Contexts ```mycontext, mycontext1, mycontext2```. Contexts ```mycontext, mycontext1``` have their own default Namespaces ```vaishrahulnamespace, vaishrahulnamespace1``` respectively. Context ```mycontext2``` has its default Namespace as ```kube-system``` which is Kubernetes System's Namespace.*
+###### *STEP#2: Create Additional Namespaces:*
 ```
 apiVersion: v1
 kind: Namespace
@@ -52,11 +32,14 @@ metadata:
 ```
 ###### *STEP#3: Listing Namespaces:*
 ![image](https://user-images.githubusercontent.com/45539698/68539048-b5a0fa80-03a3-11ea-8951-ddf725ef9e70.png)
-##### *```NOTE```: We have created 3 Contexts.
+##### *```NOTE```: We can't see default Namespaces which were created as part of Context.
+###### *STEP#3: 
 
 
 
-###### *STEP#2: Make Deployment:*
+
+
+Make Deployment:*
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
