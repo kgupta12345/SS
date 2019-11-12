@@ -62,7 +62,7 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   49d
 NAME                                COMPLETIONS   DURATION   AGE
 job.batch/kuberneteshelloworldjob   0/2           4s         4s
 </pre>
-##### *```NOTE```: There is 1 Job (kuberneteshelloworldjob) which iterates twice. On its first iteration in intitiates Pod (kuberneteshelloworldjob-z7p9v)*
+##### *```NOTE```: There is 1 Job (kuberneteshelloworldjob) which has to iterate twice. On its first iteration it instantiates Pod (kuberneteshelloworldjob-z7p9v)*
 ###### *STEP#2: Get the status of Job & Pods:*
 <pre>
 bash-3.2$ <b>kubectl get all</b>
@@ -76,7 +76,7 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   49d
 NAME                                COMPLETIONS   DURATION   AGE
 job.batch/kuberneteshelloworldjob   1/2           38s        38s
 </pre>
-##### *```NOTE```: The first iteration of Job (kuberneteshelloworldjob) is completed and it's instantiated pod(kuberneteshelloworldjob-z7p9v) is also completed. The second iteration has started and it has instantiated its Pod (kuberneteshelloworldjob-r9rk4)*
+##### *```NOTE```: The first iteration of Job (kuberneteshelloworldjob) is completed and it's instantiated Pod(kuberneteshelloworldjob-z7p9v) is also completed. Now, the second iteration has started and it has instantiated its Pod (kuberneteshelloworldjob-r9rk4)*
 ###### *STEP#3: Get the status of Job & Pods:*
 <pre>
 bash-3.2$ <b>kubectl get all</b>
@@ -90,7 +90,7 @@ service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   49d
 NAME                                COMPLETIONS   DURATION   AGE
 job.batch/kuberneteshelloworldjob   1/2           66s        66s
 </pre>
-##### *```NOTE```: The second iteration is running started and also it's instantiated Pod (kuberneteshelloworldjob-r9rk4)*
+##### *```NOTE```: The second iteration is running and also it's instantiated Pod (kuberneteshelloworldjob-r9rk4)*
 ###### *STEP#4: Get the status of Job & Pods:*
 <pre>
 bash-3.2$ <b>kubectl get all</b>
@@ -141,7 +141,7 @@ Events:
 bash-3.2$ 
 </pre>
 
-##### *```NOTE```: On describing Job (kuberneteshelloworldjob) which iterates twice, describes 2 Succeeded + the pods each iteration created -  kuberneteshelloworldjob-z7p9v and kuberneteshelloworldjob-r9rk4. Also if we check logs of each pod, we see the application output:*
+##### *```NOTE```: On describing Job (kuberneteshelloworldjob) it describes 2 Succeeded iterations and the pods which got created during each iteration -  kuberneteshelloworldjob-z7p9v and kuberneteshelloworldjob-r9rk4. Also, if we check logs of each pod, we see the application output:*
 <pre>
 bash-3.2$ <b>kubectl log kuberneteshelloworldjob-l6g7k</b>
 log is DEPRECATED and will be removed in a future version. Use logs instead.
@@ -154,7 +154,7 @@ HELLO STEP#2
 bash-3.2$ 
 </pre>
 
-##### *```NOTE```: After both Job iteartions are completed, the status becomes 2/2, which means, out of 2 Job iterations, both are completed. Also, as each iteration instantiate 1 Pod, and their desired tasks are completed, so 0/1 status comes against each Pod.*
+##### *```NOTE```: After both Job iteartions are completed, the status becomes 2/2, which means, out of 2 Job iterations, both are completed. Also, as each iteration instantiated 1 Pod (each) , and their desired tasks are also completed, so 0/1 status comes against them.*
 
 <br>
 
@@ -220,7 +220,7 @@ kuberneteshelloworldjob   10/10         2m54s      4m19s
 bash-3.2$ 
 </pre>
 
-##### *```NOTE```: There is 1 Job, which is iterated for 10 times. Each iteration will instantiate 1 Pod. Introducing  parallelism of 2 initiates 2 Jobs - 2 Pods at a time.*
+##### *```NOTE```: There is 1 Job, which expected to iterate 10 times. Each iteration will instantiate 1 Pod. Therefore, on introducing  parallelism of 2, initiates 2 iterations - 2 Pods at a time.*
 
 <hr>
 
