@@ -48,6 +48,33 @@ spec:
 
 
 ```
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vol-hp
+  labels:
+    app: vol-hp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vol-hp
+  template:
+    metadata:
+      labels:
+        app: vol-hp
+    spec:
+      containers:
+      - name: vol-hp
+        image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: vol-hp
+          mountPath: "/mnt-vol"
+      volumes:
+      - name: vol-hp
+        hostPath:
+            path: "/volume/hostpath/"
 
 ```
