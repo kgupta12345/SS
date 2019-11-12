@@ -90,10 +90,10 @@ kubectl apply f hostpath.yml
 ```
 ###### *STEP#2: Check the Deployment status:*
 ![image](https://user-images.githubusercontent.com/45539698/68698705-84911780-05a7-11ea-899c-84f55d359bf8.png)
-###### *STEP#3: Check the hostPath on both Nodes &rightarrow /volume/hostpath/ gets created.* 
+###### *STEP#3: Check the hostPath on both Nodes &rightarrow Path /volume/hostpath/ gets created.* 
 ###### *STEP#4: Create files inside hostPath Volumes:*
 ![image](https://user-images.githubusercontent.com/45539698/68682775-abd9eb80-058b-11ea-9863-2a73172a6e92.png)
-###### *STEP#5: Analyse:*
+###### *STEP#5: Observe the files created in STEP#4, appears inside Pods at path /mnt-vol:*
 ![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
 
 
