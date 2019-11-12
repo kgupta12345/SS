@@ -1,7 +1,6 @@
 ### Kubernetes Volume
 ###### Volumes means storage. The below guide aims to setup and understand various kinds of Volumes in Kubernetes. 
 
-##### Emptydir Volume: These storage units are Pod specific storage. 
 | EXPERIMENT : To Understand Emptydir Volumes |
 |---|
 ###### *STEP#1:  Create a Deployment:*
@@ -47,7 +46,12 @@ kubectl apply -f emptydir.yml
 ###### *STEP#4: Shutdown Node2 &rightarrow; New Pods re-creates on Node1 making it as STEP#3:*
 ![image](https://user-images.githubusercontent.com/45539698/68658167-f0995e80-055a-11ea-811a-da960ab9584c.png)
 
-
+| EXPERIMENT : To Understand HostPath Volumes |
+|---|
+###### *STEP#1:  Create a Deployment:*
+```
+vi hostpath.yml
+```
 ```
 apiVersion: apps/v1
 kind: Deployment
@@ -79,6 +83,10 @@ spec:
             path: "/volume/hostpath/"
 
 ```
+```
+kubectl apply f hostpath.yml
+```
+###### *STEP#2:
 ![image](https://user-images.githubusercontent.com/45539698/68677301-e2ab0400-0581-11ea-94d5-ef10d6540737.png)
 ![image](https://user-images.githubusercontent.com/45539698/68677355-fce4e200-0581-11ea-93f2-acb4b960907e.png)
 
