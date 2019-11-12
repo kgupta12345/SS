@@ -142,14 +142,37 @@ kubectl apply -f pvc.yml
 ```
 #### *```NOTE```: The PVC is searching for a PV with storageClassName “pvhp” and it is requesting a 1 GB storage from this volume.*
 ![image](https://user-images.githubusercontent.com/45539698/68702706-47308800-05af-11ea-8cc1-221932ff5cee.png)
-###### *STEP#3:  Create a Deployment :*
+###### *STEP#3: Create a Deployment :*
+```
+vi pvdep.yml
 ```
 ```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pvdep
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pvdep
+    spec:
+      containers:
+      - name: shell
+        image: rahulvaish/springbootdocker
+        volumeMounts:
+        - name: pvdep
+          mountPath: "/mnt-pvdep/"
+      volumes:
+      - name: pvdep
+        persistentVolumeClaim:
+            claimName: pvchp
+```	
 ```
+Kubectl apply -f pvdep.yml
 ```
-```
-
-
+###### *STEP#4: *
 
 
 
