@@ -179,10 +179,11 @@ spec:
 ```
 Kubectl apply -f pvdep.yml
 ```
-###### *STEP#4: *
+###### *STEP#4: Insider Pod pvdep-7fd966f564-m8t9l, create a file:*
+![image](https://user-images.githubusercontent.com/45539698/68704648-a3e17200-05b2-11ea-8ea7-b74802fdff9e.png)
 
 
-
+![image](https://user-images.githubusercontent.com/45539698/68705968-05a2db80-05b5-11ea-903e-7030f96c60fc.png)
 
 
 
