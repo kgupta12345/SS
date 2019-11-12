@@ -78,3 +78,14 @@ spec:
             path: "/volume/hostpath/"
 
 ```
+![image](https://user-images.githubusercontent.com/45539698/68677301-e2ab0400-0581-11ea-94d5-ef10d6540737.png)
+![image](https://user-images.githubusercontent.com/45539698/68677355-fce4e200-0581-11ea-93f2-acb4b960907e.png)
+
+
+![image](https://user-images.githubusercontent.com/45539698/68681626-b98e7180-0589-11ea-9c0a-dd91ef7b5d5f.png)
+
+![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
+
+
+
+
