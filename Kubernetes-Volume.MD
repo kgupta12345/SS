@@ -185,6 +185,7 @@ Kubectl apply -f pvdep.yml
 
 ![image](https://user-images.githubusercontent.com/45539698/68705968-05a2db80-05b5-11ea-903e-7030f96c60fc.png)
 
+![image](https://user-images.githubusercontent.com/45539698/68706481-f2444000-05b5-11ea-8e21-c15ace7b2013.png)
 
 
 
