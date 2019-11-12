@@ -96,4 +96,5 @@ kubectl apply f hostpath.yml
 ###### *STEP#5: Observe the files created in STEP#4, appears inside Pods at path /mnt-vol:*
 ![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
 
-
+| EXPERIMENT : To Understand Persistent Volumes |
+|---|
