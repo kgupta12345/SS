@@ -3,6 +3,7 @@
 
 | EXPERIMENT : To Understand Emptydir Volumes |
 |---|
+##### Emptydir are temporary storage, which resides on RAM and are specific to Pods. They are non-persistent strorage units.
 ###### *STEP#1:  Create a Deployment:*
 ```
 vi emptydir.yml
@@ -48,6 +49,7 @@ kubectl apply -f emptydir.yml
 
 | EXPERIMENT : To Understand HostPath Volumes |
 |---|
+##### HostPaths are storage that gets created on HostMachine/Nodes. HostPath Volumes are persistent in nature.
 ###### *STEP#1:  Create a Deployment:*
 ```
 vi hostpath.yml
@@ -86,19 +88,12 @@ spec:
 ```
 kubectl apply f hostpath.yml
 ```
-###### *STEP#2:
-![image](https://user-images.githubusercontent.com/45539698/68677301-e2ab0400-0581-11ea-94d5-ef10d6540737.png)
-![image](https://user-images.githubusercontent.com/45539698/68677355-fce4e200-0581-11ea-93f2-acb4b960907e.png)
-
-
-![image](https://user-images.githubusercontent.com/45539698/68681626-b98e7180-0589-11ea-9c0a-dd91ef7b5d5f.png)
-
-![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
-
-
-![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
-
-
+###### *STEP#2: Check the Deployment status:*
+![image](https://user-images.githubusercontent.com/45539698/68698705-84911780-05a7-11ea-899c-84f55d359bf8.png)
+###### *STEP#3: Check the hostPath on both Nodes &rightarrow /volume/hostpath/ gets created.* 
+###### *STEP#4: Create files inside hostPath Volumes:*
 ![image](https://user-images.githubusercontent.com/45539698/68682775-abd9eb80-058b-11ea-9863-2a73172a6e92.png)
+###### *STEP#5: Analyse:*
+![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
 
 
