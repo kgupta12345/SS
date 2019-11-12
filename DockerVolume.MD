@@ -43,13 +43,13 @@ bash-3.2$ <b>docker ps </b>
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
 438f7e343b4b        mysql               "docker-entrypoint.s…"   5 seconds ago       Up 3 seconds        0.0.0.0:3306->3306/tcp, 33060/tcp   testmysqldocker
 </pre>
-###### *STEP#3: Check the status of MySQL bounded Volume:*
+###### *STEP#3: Check for bounded Volume:*
 <pre>
 bash-3.2$ <b>docker volume ls </b> 
 DRIVER              VOLUME NAME
 local               runtimemysqldockervolume
 </pre>
-##### *```NOTE```: The MySQL container is running and is bounded with runtimemysqldockervolume (/var/lib/docker/volumes/)*
+##### *```NOTE```: The MySQL container which was bounded with runtime docker volume- runtimemysqldockervolume (/var/lib/docker/volumes/) also exists.*
 ###### *STEP#4: Create a table inside MySQL Container:*
 <pre>
 bash-3.2$ <b>docker exec -it testmysqldocker mysql -uroot -proot </b> 
