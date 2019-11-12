@@ -1,9 +1,15 @@
 ### Kubernetes Volume
-######
+###### Volume refer to basic unit of storage. The below guide aims to setup and understand Volumes in Kubernetes.
 
-##### Emptydir Volume:
+##### Emptydir Volume: These Volumes are pod specific storage. 
 
-##### USECASE#1: 
+| EXPERIMENT : To Understand Emptydir Volumes |
+|---|
+
+###### STEP#1: Create a Deployment:
+```
+vi emptydir.yml
+```
 ```
 apiVersion: apps/v1
 kind: Deployment
@@ -31,9 +37,12 @@ spec:
           mountPath: "/volumepath/emptydirvol"
       volumes:
       - name: vol-ed
-        emptyDir: {}
-        
+        emptyDir: {}       
 ```
+```
+kubectl apply -f emptydir.yml
+```
+
 ![image](https://user-images.githubusercontent.com/45539698/68653982-f68b4180-0552-11ea-832c-3f8098746d7b.png)
 
 ![image](https://user-images.githubusercontent.com/45539698/68656889-ab742d00-0558-11ea-8aad-9e04e1bbff74.png)
