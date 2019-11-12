@@ -49,7 +49,7 @@ bash-3.2$ <b>docker volume ls </b>
 DRIVER              VOLUME NAME
 local               runtimemysqldockervolume
 </pre>
-##### *```NOTE```: The MySQL container which was bounded with runtime docker volume- runtimemysqldockervolume (/var/lib/docker/volumes/) also exists.*
+##### *```NOTE```: The MySQL container, which was bounded with runtime docker volume- runtimemysqldockervolume (/var/lib/docker/volumes/) also exists.*
 ###### *STEP#4: Create a table inside MySQL Container:*
 <pre>
 bash-3.2$ <b>docker exec -it testmysqldocker mysql -uroot -proot </b> 
