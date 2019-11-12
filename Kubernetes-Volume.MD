@@ -147,20 +147,27 @@ kubectl apply -f pvc.yml
 vi pvdep.yml
 ```
 ```
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pvdep
+  labels:
+    app: pvdep
 spec:
-  replicas: 1
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pvdep
   template:
     metadata:
       labels:
         app: pvdep
     spec:
       containers:
-      - name: shell
+      - name: pvdep
         image: rahulvaish/springbootdocker
+        ports:
+        - containerPort: 8080
         volumeMounts:
         - name: pvdep
           mountPath: "/mnt-pvdep/"
