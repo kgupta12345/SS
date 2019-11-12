@@ -96,5 +96,68 @@ kubectl apply f hostpath.yml
 ###### *STEP#5: Observe the files created in STEP#4, appears inside Pods at path /mnt-vol:*
 ![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
 
-| EXPERIMENT : To Understand Persistent Volumes |
+| EXPERIMENT : To Understand Persistent Volumes & Persistent Volume Claims |
 |---|
+##### Persistent Volumes are used the same way as other volumes that we described earlier. But the pod needn’t care about how the storage shall be provisioned to it. The cluster administrator creates the volumes and pods can access them through Persistent Volume Claims, a level of abstraction between the volume and its storage mechanism.
+###### *STEP#1:  Create a PV:*
+```
+vi pvhp.yml
+```
+```
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pvhp
+spec:
+  storageClassName: pvhp
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/pvhp/data"
+```
+```
+kubectl apply -f pvhp.yml
+```
+###### *STEP#2:  Create a PVC:*
+```
+vi pvc.yml
+```
+```
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchp
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: pvhp
+```
+```
+kubectl apply -f pvc.yml
+```
+#### *```NOTE```: The PVC is searching for a PV with storageClassName “pvhp” and it is requesting a 1 GB storage from this volume.*
+![image](https://user-images.githubusercontent.com/45539698/68702706-47308800-05af-11ea-8cc1-221932ff5cee.png)
+###### *STEP#3:  Create a Deployment :*
+```
+```
+```
+```
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
