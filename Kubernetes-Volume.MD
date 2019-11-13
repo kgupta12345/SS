@@ -187,7 +187,7 @@ kubectl apply -f pvdep.yml
 ![image](https://user-images.githubusercontent.com/45539698/68705968-05a2db80-05b5-11ea-903e-7030f96c60fc.png)
 ##### *```NOTE```: The PV we chose is of type HostPath. In our case, there are two Pods, one Pod gets created Node#1, while anther Pod gets created on Node#2. We created a file inside Node#2's Pod on location /mnt-pvdep/. The created file can be accessed  by any other Pod which gets landed on Node#2.*
 ![image](https://user-images.githubusercontent.com/45539698/68706481-f2444000-05b5-11ea-8e21-c15ace7b2013.png)
-##### *```NOTE```: Here, the new Pod which lands on Node#2 can access the file, as it too mounts on the same location /mnt-pvdep/. *
+##### *```NOTE```: Here, the new Pod which lands on Node#2 can access the file, as it too mounts on the same location /mnt-pvdep/. Also, to note that PV maintains a level of abstraction, which means /pvhp/data can be located.*
 
 
 
