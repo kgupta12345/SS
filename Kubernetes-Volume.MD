@@ -47,6 +47,8 @@ kubectl apply -f emptydir.yml
 ###### *STEP#4: Shutdown Node2 &rightarrow; New Pods re-creates on Node1 making it as STEP#3:*
 ![image](https://user-images.githubusercontent.com/45539698/68658167-f0995e80-055a-11ea-811a-da960ab9584c.png)
 
+<hr>
+
 | EXPERIMENT : To Understand HostPath Volumes |
 |---|
 ##### HostPaths are storage that gets created on HostMachine/Nodes. HostPath Volumes are persistent in nature.
@@ -95,6 +97,8 @@ kubectl apply -f hostpath.yml
 ![image](https://user-images.githubusercontent.com/45539698/68682775-abd9eb80-058b-11ea-9863-2a73172a6e92.png)
 ###### *STEP#5: Observe the files created in STEP#4, appears inside Pods at path /mnt-vol:*
 ![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
+
+<hr>
 
 | EXPERIMENT : To Understand Persistent Volumes & Persistent Volume Claims |
 |---|
@@ -190,6 +194,6 @@ Kubectl apply -f pvdep.yml
 
 
 
-
+<hr>
 
 
