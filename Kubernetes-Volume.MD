@@ -86,7 +86,7 @@ spec:
 
 ```
 ```
-kubectl apply f hostpath.yml
+kubectl apply -f hostpath.yml
 ```
 ###### *STEP#2: Check the Deployment status:*
 ![image](https://user-images.githubusercontent.com/45539698/68698705-84911780-05a7-11ea-899c-84f55d359bf8.png)
