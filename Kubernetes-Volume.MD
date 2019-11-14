@@ -92,12 +92,12 @@ kubectl apply -f hostpath.yml
 ```
 ###### *STEP#2: Check the Deployment status:*
 ![image](https://user-images.githubusercontent.com/45539698/68698705-84911780-05a7-11ea-899c-84f55d359bf8.png)
-###### *STEP#3: Check the hostPath on both Nodes(Node#1 and Node#2) &rightarrow Path /volume/hostpath/ (mentioned in the hostpath.yml) gets created.* 
-###### *STEP#4: Create node1.txt in /volume/hostpath/ of Node#1 and node2.txt in /volume/hostpath/ of Node#2.*
+###### *STEP#3: Check hostPath (/volume/hostpath/) gets created on both Nodes(Node#1 and Node#2).* 
+###### *STEP#4: Create node1.txt inside /volume/hostpath/ of Node#1 and node2.txt inside /volume/hostpath/ of Node#2:*
 ![image](https://user-images.githubusercontent.com/45539698/68682775-abd9eb80-058b-11ea-9863-2a73172a6e92.png)
-###### *STEP#5: Observe the files created in STEP#4, appears inside Pods at path /mnt-vol:*
+###### *STEP#5: Navigate inside Pods:*
 ![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
-##### *```NOTE```: node1.txt is created inside Node#1. node2.txt is created inside Node#2.*
+##### *```NOTE```: node1.txt which was created in /volume/hostpath/ of Node#1 can be viewed from Pod(). Similarly, node2.txt which was created in /volume/hostpath/ of Node#2 can be viewed from inside Pod().*
 <hr>
 
 | EXPERIMENT : To Understand Persistent Volumes & Persistent Volume Claims |
