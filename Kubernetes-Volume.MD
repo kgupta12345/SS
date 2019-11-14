@@ -97,8 +97,7 @@ kubectl apply -f hostpath.yml
 ![image](https://user-images.githubusercontent.com/45539698/68682775-abd9eb80-058b-11ea-9863-2a73172a6e92.png)
 ###### *STEP#5: Navigate inside Pods:*
 ![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
-##### *```NOTE```: node1.txt, which was created under /volume/hostpath/ of Node#1 is visible from Pod(vol-hp-b4b769c5c-9gttxf) as it landed on the same node (Node#1) where node1.txt exists. Taking this further, not all Pods landing on Node#1 can access node1.txt; if we understand the deployment manifest, we can see that, we have mapped Pod's directory structure (/mnt-vol) with Node's directory structure (/volume/hostpath/) the same location where our node1.txt is residing.  
-##### Similarly, node2.txt which was created under /volume/hostpath/ of Node#2 is visible from Pod (vol-hp-b4b769c5c-64fm7) as it landed on on the same node (Node#2) where node2.txt exists. Again, not all Pods landing on Node#2 can access node2.txt; if we understand the deployment manifest, we can see that, we have mapped Pod's volumemount (/mnt-vol) with Node's Path (/volume/hostpath/) the location where our node2.txt is residing.*
+##### *```NOTE```: node1.txt, which we created under /volume/hostpath/ of Node#1 is visible from Pod's(vol-hp-b4b769c5c-9gttxf) directory structure /mnt-vol. This is because, in our deployment manifest, we have mapped Pod's directory structure (/mnt-vol) with Node's directory structure (/volume/hostpath/). Similarly, node2.txt, which was created under /volume/hostpath/ of Node#2 is visible from Pod's(vol-hp-b4b769c5c-64fm7) directory structure /mnt-vol. The reason is same- in our deployment manifest, we have mapped Pod's directory structure (/mnt-vol) with Node's directory structure (/volume/hostpath/).
 
 <hr>
 
