@@ -97,7 +97,8 @@ kubectl apply -f hostpath.yml
 ![image](https://user-images.githubusercontent.com/45539698/68682775-abd9eb80-058b-11ea-9863-2a73172a6e92.png)
 ###### *STEP#5: Navigate inside Pods:*
 ![image](https://user-images.githubusercontent.com/45539698/68682079-8ef0e880-058a-11ea-8d65-3bd057f8f821.png)
-##### *```NOTE```: node1.txt which was created in /volume/hostpath/ of Node#1 can be viewed from the Pod(/mnt-vol) which lands on Node#1. Similarly, node2.txt which was created in /volume/hostpath/ of Node#2 can be viewed from the Pod(/mnt-vol) that lands on Node#2.*
+##### *```NOTE```: node1.txt, which was created at directory location /volume/hostpath/ of Node#1 can be viewed from inside of the Pod that gets on Node#1. Similarly, node2.txt which was created at directory location /volume/hostpath/ of Node#2 can be viewed from inside of the Pod that gets on Node#2.*
+
 <hr>
 
 | EXPERIMENT : To Understand Persistent Volumes & Persistent Volume Claims |
