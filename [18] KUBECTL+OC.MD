@@ -1,12 +1,12 @@
 ### Kubernetes from Openshift CLI
 
-##### STEP#1: Get Openshift Client:
+##### STEP#1: Get and SetUp Openshift Client:
  <pre>  
- [1] Download OSE Client: https://www.okd.io/download.html
- [2] tar -zxvf openshift-origin-server-v3.11.0-0cbc58b-linux-64bit.tar.gz 
- [3] mv openshift-origin-server-v3.11.0-0cbc58b-linux-64bit /usr/local/OSE/
- [4] sudo cp  /usr/local/OSE/oc /usr/local/bin
- [5] sudo cp  /usr/local/OSE/kubectl /usr/local/bin
+ [1] <b>Download:</b> wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-server-v3.11.0-0cbc58b-linux-64bit.tar.gz
+ [2] <b>Untar:</b> tar -zxvf openshift-origin-server-v3.11.0-0cbc58b-linux-64bit.tar.gz 
+ [3] <b>Execute:</b> mv openshift-origin-server-v3.11.0-0cbc58b-linux-64bit /usr/local/OSE/
+ [4] <b>Execute:</b> sudo cp  /usr/local/OSE/oc /usr/local/bin
+ [5] <b>Execute:</b> sudo cp  /usr/local/OSE/kubectl /usr/local/bin
  </pre>
 ##### STEP#2: Get the Connection String form OSE:
 ![image](https://user-images.githubusercontent.com/45539698/68072250-a8837a80-fda9-11e9-9b41-4fb49297aa92.png)
